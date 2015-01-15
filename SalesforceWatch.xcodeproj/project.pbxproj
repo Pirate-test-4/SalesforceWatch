@@ -50,6 +50,9 @@
 		E725F9E91A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E7F7F5A31A65C6E4003CFD1C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7F7F5A21A65C6E4003CFD1C /* images.xcassets */; };
 		E7F7F5A51A65C849003CFD1C /* Chevron.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5A41A65C849003CFD1C /* Chevron.swift */; };
+		E7F7F5AC1A66E566003CFD1C /* ApprovalDetailsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */; };
+		E7F7F5AE1A66EE66003CFD1C /* ApprovalsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */; };
+		E7F7F5B01A6738D2003CFD1C /* SalesforceObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AF1A6738D2003CFD1C /* SalesforceObjectType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +228,9 @@
 		E725F9F11A5C8E7800D6203C /* SalesforceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SalesforceWatch.entitlements; sourceTree = SOURCE_ROOT; };
 		E7F7F5A21A65C6E4003CFD1C /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		E7F7F5A41A65C849003CFD1C /* Chevron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chevron.swift; sourceTree = "<group>"; };
+		E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalDetailsRowController.swift; sourceTree = "<group>"; };
+		E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsInterfaceController.swift; sourceTree = "<group>"; };
+		E7F7F5AF1A6738D2003CFD1C /* SalesforceObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalesforceObjectType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,11 +667,12 @@
 		E725F9D21A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E7F7F5AA1A66E055003CFD1C /* Helpers */,
+				E7F7F5A91A66E04A003CFD1C /* Glances */,
+				E7F7F5A81A66E032003CFD1C /* Interfaces */,
 				E725F9D71A5C8A4A00D6203C /* Images.xcassets */,
 				E71A65DA1A5DD4E800179F5E /* SalesforceWatch WatchKit Extension.entitlements */,
-				E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */,
 				E725F9D31A5C8A4A00D6203C /* Supporting Files */,
-				E7F7F5A41A65C849003CFD1C /* Chevron.swift */,
 			);
 			path = "SalesforceWatch WatchKit Extension";
 			sourceTree = "<group>";
@@ -694,6 +701,32 @@
 				E725F9E11A5C8A4A00D6203C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7F7F5A81A66E032003CFD1C /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */,
+				E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */,
+				E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		E7F7F5A91A66E04A003CFD1C /* Glances */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Glances;
+			sourceTree = "<group>";
+		};
+		E7F7F5AA1A66E055003CFD1C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E7F7F5A41A65C849003CFD1C /* Chevron.swift */,
+				E7F7F5AF1A6738D2003CFD1C /* SalesforceObjectType.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -855,7 +888,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F7F5AC1A66E566003CFD1C /* ApprovalDetailsRowController.swift in Sources */,
+				E7F7F5B01A6738D2003CFD1C /* SalesforceObjectType.swift in Sources */,
 				E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */,
+				E7F7F5AE1A66EE66003CFD1C /* ApprovalsInterfaceController.swift in Sources */,
 				E7F7F5A51A65C849003CFD1C /* Chevron.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

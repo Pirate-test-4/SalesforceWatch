@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--ApprovalsHome-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SalesforceWatch_WatchKit_App" customModuleProvider="target">
+                <controller identifier="ApprovalsHome" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SalesforceWatch_WatchKit_App" customModuleProvider="target">
                     <items>
                         <button alignment="center" verticalAlignment="center" title="?" backgroundImage="ring-0degrees" id="Amg-66-8wy">
                             <fontDescription key="font" type="boldSystem" pointSize="57"/>
@@ -23,11 +23,36 @@
                     </connections>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="121" y="135"/>
         </scene>
-        <!--Interface Controller-->
+        <!--ApprovalsList-->
         <scene sceneID="GCv-1y-TH3">
             <objects>
-                <controller id="pMU-VS-2ga"/>
+                <controller identifier="ApprovalsList" id="pMU-VS-2ga" customClass="ApprovalsInterfaceController" customModule="SalesforceWatch_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="84r-ea-9RI">
+                            <items>
+                                <tableRow identifier="ApprovalRows" id="3fS-2b-XEP" customClass="ApprovalDetailsRowController" customModule="SalesforceWatch_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="aOJ-0T-0HB">
+                                        <items>
+                                            <imageView width="25" height="25" alignment="left" verticalAlignment="center" id="2TR-5h-Xzi"/>
+                                            <label alignment="left" verticalAlignment="center" text="comment" textAlignment="left" id="GlT-2O-ed7">
+                                                <fontDescription key="font" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="detailLabel" destination="GlT-2O-ed7" id="gdR-TK-Os5"/>
+                                        <outlet property="image" destination="2TR-5h-Xzi" id="KaJ-hJ-a6T"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="resultsTable" destination="84r-ea-9RI" id="Wjr-ss-S2r"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="366" y="135"/>
         </scene>
