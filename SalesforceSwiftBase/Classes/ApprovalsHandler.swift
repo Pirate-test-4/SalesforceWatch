@@ -20,7 +20,7 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         var sharedInstance = SFRestAPI.sharedInstance()
         //var approvalsPath: String = "/v"+sharedInstance.apiVersion+"/process/approvals/"
         //var request: AnyObject! = SFRestRequest.requestWithMethod(SFRestMethodGET, path: approvalsPath, queryParams: nil)
-        var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId FROM ProcessInstance LIMIT 100")
+        var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance order by LastModifiedDate")
         
        sharedInstance.send(request as SFRestRequest, delegate: self)
    }
