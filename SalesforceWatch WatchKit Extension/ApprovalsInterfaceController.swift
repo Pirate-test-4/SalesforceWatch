@@ -19,6 +19,7 @@ class ApprovalsInterfaceController: WKInterfaceController {
         precondition(context is NSArray, "Expected class of `context` to be NSArray.")
         
         let approvals = context as NSArray
+        
        // listDocument = ListDocument(fileURL: listInfo.URL)
         
         // Set the title of the interface controller based on the list's name.
@@ -54,6 +55,29 @@ class ApprovalsInterfaceController: WKInterfaceController {
             
         }
         
+    }
+    
+    
+    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
+        if segueIdentifier == "processSelected" {
+            println("seque")
+            //return self.approvalsResult
+            return nil
+        } else {
+            return nil
+        }
+    }
+
+   
+    
+    // MARK: Table Actions
+    
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+       
+        println("tap that")
+        self.pushControllerWithName("processSelected", context: "hello")
+       // self.contextForSegueWithIdentifier("processSelected")
+       
     }
 
 }

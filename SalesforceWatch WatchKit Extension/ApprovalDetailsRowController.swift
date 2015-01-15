@@ -18,4 +18,6 @@ class ApprovalDetailsRowController: NSObject {
     
     var opportunityId: String!
     
+    
+    
 }
