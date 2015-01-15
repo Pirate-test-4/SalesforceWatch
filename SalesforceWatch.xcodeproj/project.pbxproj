@@ -46,8 +46,9 @@
 		E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */; };
 		E725F9D81A5C8A4A00D6203C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E725F9D71A5C8A4A00D6203C /* Images.xcassets */; };
 		E725F9DC1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */; };
-		E725F9E41A5C8A4A00D6203C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E725F9E21A5C8A4A00D6203C /* Interface.storyboard */; };
 		E725F9E91A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */; };
+		E7EFDD811A684CC80022AB99 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EFDD801A684CC80022AB99 /* Interface.storyboard */; };
 		E7F7F5A31A65C6E4003CFD1C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7F7F5A21A65C6E4003CFD1C /* images.xcassets */; };
 		E7F7F5A51A65C849003CFD1C /* Chevron.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5A41A65C849003CFD1C /* Chevron.swift */; };
 		E7F7F5AC1A66E566003CFD1C /* ApprovalDetailsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */; };
@@ -224,8 +225,9 @@
 		E725F9D71A5C8A4A00D6203C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SalesforceWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E725F9E11A5C8A4A00D6203C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E725F9E31A5C8A4A00D6203C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E725F9F11A5C8E7800D6203C /* SalesforceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SalesforceWatch.entitlements; sourceTree = SOURCE_ROOT; };
+		E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsDetailController.swift; sourceTree = "<group>"; };
+		E7EFDD801A684CC80022AB99 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Interface.storyboard; path = ../../../../../.Trash/Interface.storyboard; sourceTree = "<group>"; };
 		E7F7F5A21A65C6E4003CFD1C /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		E7F7F5A41A65C849003CFD1C /* Chevron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chevron.swift; sourceTree = "<group>"; };
 		E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalDetailsRowController.swift; sourceTree = "<group>"; };
@@ -688,8 +690,8 @@
 		E725F9DF1A5C8A4A00D6203C /* SalesforceWatch WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				E7EFDD801A684CC80022AB99 /* Interface.storyboard */,
 				E7F7F5A21A65C6E4003CFD1C /* images.xcassets */,
-				E725F9E21A5C8A4A00D6203C /* Interface.storyboard */,
 				E725F9E01A5C8A4A00D6203C /* Supporting Files */,
 			);
 			path = "SalesforceWatch WatchKit App";
@@ -709,6 +711,7 @@
 				E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */,
 				E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */,
 				E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */,
+				E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
@@ -863,7 +866,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E725F9E41A5C8A4A00D6203C /* Interface.storyboard in Resources */,
+				E7EFDD811A684CC80022AB99 /* Interface.storyboard in Resources */,
 				E7F7F5A31A65C6E4003CFD1C /* images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,6 +892,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7F7F5AC1A66E566003CFD1C /* ApprovalDetailsRowController.swift in Sources */,
+				E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */,
 				E7F7F5B01A6738D2003CFD1C /* SalesforceObjectType.swift in Sources */,
 				E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */,
 				E7F7F5AE1A66EE66003CFD1C /* ApprovalsInterfaceController.swift in Sources */,
@@ -918,14 +922,6 @@
 				824A9DE21724E16400C9BD79 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E725F9E21A5C8A4A00D6203C /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E725F9E31A5C8A4A00D6203C /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
