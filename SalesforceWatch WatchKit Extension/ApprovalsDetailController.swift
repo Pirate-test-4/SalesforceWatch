@@ -23,4 +23,15 @@ class ApprovalsDetailController: WKInterfaceController {
     
     @IBAction func approveTapped() {
     }
+    
+    override func awakeWithContext(context: AnyObject?) {
+        precondition(context is Dictionary<String, String> , "Expected class of `context` to be dictionary containing record and targetobjectid.")
+        
+        //let (recordid, targetobjectid) = context as (String, String)
+        let record = context as Dictionary<String, String>
+        println(record["recordid"])
+        //println(recordid)
+        
+        
+    }
 }

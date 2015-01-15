@@ -48,6 +48,7 @@ class ApprovalsInterfaceController: WKInterfaceController {
        
             var s: NSDictionary = record as NSDictionary
             row.image.setImageNamed(s["Status"] as? String)
+            row.recordid = s["Id"] as? String
             row.opportunityId = s["TargetObjectId"] as? String
             var status = s["Status"] as? String
             row.detailLabel.setText(status! + " "+SalesforceObjectType.getType(row.opportunityId))
@@ -57,25 +58,26 @@ class ApprovalsInterfaceController: WKInterfaceController {
         
     }
     
-    
-    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
-        if segueIdentifier == "processSelected" {
-            println("seque")
-            //return self.approvalsResult
-            return nil
-        } else {
-            return nil
-        }
-    }
 
-   
+    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+        let row = table.rowControllerAtIndex(rowIndex) as? ApprovalDetailsRowController
+        //cant return a tuple for an AnyObject :(
+        //let selectedProcess = (processid: row?.recordid, targetobjectid: row?.opportunityId)
+        
+        var selectedProcess : Dictionary<String, String> = Dictionary()
+        selectedProcess["recordid"] = row?.recordid
+        selectedProcess["targetobjectid"] = row?.opportunityId
+        
+    
+        return selectedProcess
+    }
     
     // MARK: Table Actions
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
        
-        println("tap that")
-        self.pushControllerWithName("processSelected", context: "hello")
+        let row = resultsTable.rowControllerAtIndex(rowIndex) as? ApprovalDetailsRowController
+        self.pushControllerWithName("processSelected", context: row?.opportunityId)
        // self.contextForSegueWithIdentifier("processSelected")
        
     }

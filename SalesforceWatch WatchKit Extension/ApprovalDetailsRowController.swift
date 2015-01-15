@@ -16,7 +16,10 @@ class ApprovalDetailsRowController: NSObject {
     //use this for setting step comment from process
     @IBOutlet weak var detailLabel: WKInterfaceLabel!
     
+   //target object id
     var opportunityId: String!
+    //process instance id
+    var recordid: String!
     
     
     
