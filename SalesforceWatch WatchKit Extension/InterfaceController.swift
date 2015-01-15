@@ -14,6 +14,7 @@ import Foundation
 class InterfaceController: WKInterfaceController {
 
   
+    var approvalsResult: NSArray!
     
 
     @IBOutlet weak var pendingApprovalsButton: WKInterfaceButton!
@@ -51,12 +52,12 @@ class InterfaceController: WKInterfaceController {
         WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
            
             if let reply = reply as? [String: NSArray] {
-                var results: NSArray! = reply["results"]
-                var resultsCount = String(results.count)
+                self.approvalsResult = reply["results"]
+                var resultsCount = String(self.approvalsResult.count)
                 self.pendingApprovalsButton.setTitle(resultsCount)
                 //max out at 360...but anyone with that many approvals should be fired
                 //self.pendingApprovalsButton.setBackgroundImageNamed("glance-"+resultsCount)
-                self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(results.count))
+                self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(self.approvalsResult.count))
                
                 
                 
@@ -102,5 +103,15 @@ class InterfaceController: WKInterfaceController {
     
     }
   */
+    
+
+    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
+        if segueIdentifier == "showApprovals" {
+            println("seque pressed!")
+            return self.approvalsResult
+        } else {
+            return nil
+        }
+    }
     
 }
