@@ -30,7 +30,36 @@ class ApprovalsDetailController: WKInterfaceController {
         //let (recordid, targetobjectid) = context as (String, String)
         let record = context as Dictionary<String, String>
         println(record["recordid"])
+        let id: NSString = record["targetobjectid"]!
         //println(recordid)
+        
+        //let requestBundle = ["request-type" : "approval-details", "id" : id]
+        let requestBundle = ["request-type" : "approval-details"]
+        
+        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+            
+            if let reply = reply as? [String: NSArray] {
+                 let results = reply["results"]
+                
+                //self.optyName.setText(results["name"])
+                //self.accountName.setText(results["accountname"])
+               // self.optyAmount.setText(results["amount"])
+                
+                
+                
+                //   self.userNameLabel.setText("Hello "+reply["username"]!)
+                
+                // for (key, val) in reply {
+                //   println("parent app reponse is \(key): \(val)")
+                //}
+            }
+            else {
+                // self.userNameLabel.setText("No Response")
+                println("no response")
+                
+            }
+        })
+
         
         
     }

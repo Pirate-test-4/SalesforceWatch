@@ -47,12 +47,17 @@ class RootVC: UIViewController {
        // println("syncing app group")
         
         //add observer to listen for requests from WatchKit
+        //TODO: move these to separate handlers.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
             name: "WatchKitSaysHello",
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
             name: "approval-count",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
+            name: "approval-details",
             object: nil)
         
         homeLabel.text = "VC"
@@ -62,16 +67,40 @@ class RootVC: UIViewController {
         
     }
     
+    
+    
+    //TODO: move to separate handlers with observers
+    // right now this is easier to debug due to the sep watch schemes. I can add debug to a visual label
     func handleWatchKitNotification(notification: NSNotification) {
         
         println("Got a watch notification")
-        homeLabel.text = "Got a notification"
+        homeLabel.text = "Got notification: "+notification.name
         
-        
+        //do this before any handler methods.
         if let watchInfo = notification.object as? WatchInfo {
-             self.approvalsHandler.watchInfo = watchInfo
+            self.approvalsHandler.watchInfo = watchInfo
         }
-      }
+        
+        
+        
+        if(notification.name == "approval-count") {
+            homeLabel.text = "Approval Count Notification"
+            self.approvalsHandler.getApprovals()
+            
+        } else if (notification.name == "approval-details") {
+            homeLabel.text = "Approval Details Notification"
+            if let info = notification.userInfo as? Dictionary<String,String> {
+                if let s = info["targetobjectid"] {
+                    homeLabel.text = s
+                    self.approvalsHandler.getProcessDetails(s)
+                }
+            
+            }
+        
+        }
+    
+    //end
+    }
     
     @IBAction func responseTapped(sender: AnyObject) {
        

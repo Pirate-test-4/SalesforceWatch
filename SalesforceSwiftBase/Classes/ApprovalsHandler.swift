@@ -25,6 +25,10 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
        sharedInstance.send(request as SFRestRequest, delegate: self)
    }
     
+    func getProcessDetails(targetobjectid: NSString) {
+        
+    }
+    
     
     
     func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {

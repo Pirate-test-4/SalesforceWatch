@@ -227,6 +227,10 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
     
     NSString *reqType = [userInfo objectForKey:@"request-type"];
     
+    WatchInfo *winfo = [[WatchInfo alloc] initWithUserInfo:userInfo reply:reply];
+    [[NSNotificationCenter defaultCenter] postNotificationName: reqType object:winfo];
+    
+    /*
     //looks like watchkit only likes dictionary objects with primitives in :(
     if ([reqType isEqualToString:@"userid"]) {
         NSDictionary *resp = [NSDictionary dictionaryWithObject:[SFUserAccountManager sharedInstance].currentUserId forKey:reqType];
@@ -247,6 +251,7 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
         NSDictionary *resp = [NSDictionary dictionaryWithObject:[@"Unknown request type" stringByAppendingString:reqType] forKey:reqType];
         reply(resp);
     }
+     */
     
     //WatchInfo *winfo = [[WatchInfo alloc] init];
     // Payload *pl = [[Payload alloc] init];
