@@ -25,7 +25,12 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
        sharedInstance.send(request as SFRestRequest, delegate: self)
    }
     
-    func getProcessDetails(targetobjectid: NSString) {
+    func getTargetObjectDetails(targetobjectid: NSString) {
+        
+        var sharedInstance = SFRestAPI.sharedInstance()
+        var request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+targetobjectid+"'")
+        
+        sharedInstance.send(request as SFRestRequest, delegate: self)
         
     }
     

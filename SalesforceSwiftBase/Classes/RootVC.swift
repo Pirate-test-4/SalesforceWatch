@@ -65,6 +65,7 @@ class RootVC: UIViewController {
         
         var sharedInstance = SFRestAPI.sharedInstance()
         
+              
     }
     
     
@@ -89,10 +90,10 @@ class RootVC: UIViewController {
             
         } else if (notification.name == "approval-details") {
             homeLabel.text = "Approval Details Notification"
-            if let info = notification.userInfo as? Dictionary<String,String> {
-                if let s = info["targetobjectid"] {
+            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                if let s = info["id"] {
                     homeLabel.text = s
-                    self.approvalsHandler.getProcessDetails(s)
+                    self.approvalsHandler.getTargetObjectDetails(s)
                 }
             
             }

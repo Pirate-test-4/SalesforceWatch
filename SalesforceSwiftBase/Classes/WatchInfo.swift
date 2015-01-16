@@ -14,11 +14,14 @@ import Foundation
 
 class WatchInfo: NSObject, SFRestDelegate {
     
+    var userInfo: [NSObject : AnyObject]!
+    
     let replyBlock: ([NSObject : AnyObject]!) -> Void
+    
     
     init(userInfo: [NSObject : AnyObject], reply: ([NSObject : AnyObject]!) -> Void) {
         
-        
+        self.userInfo = userInfo
         replyBlock = reply
     }
        

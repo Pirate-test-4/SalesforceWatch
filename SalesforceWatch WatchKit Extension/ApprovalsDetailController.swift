@@ -16,6 +16,7 @@ class ApprovalsDetailController: WKInterfaceController {
     @IBOutlet weak var optyAmount: WKInterfaceLabel!
     @IBOutlet weak var approveButton: WKInterfaceButton!
     @IBOutlet weak var rejectButton: WKInterfaceButton!
+    var id: String!
     
     
     @IBAction func rejectTapped() {
@@ -33,30 +34,43 @@ class ApprovalsDetailController: WKInterfaceController {
         let id: NSString = record["targetobjectid"]!
         //println(recordid)
         
-        //let requestBundle = ["request-type" : "approval-details", "id" : id]
-        let requestBundle = ["request-type" : "approval-details"]
+        let requestBundle = ["request-type" : "approval-details", "id" : id]
+        //let requestBundle = ["request-type" : "approval-details"]
         
         WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
             
             if let reply = reply as? [String: NSArray] {
                  let results = reply["results"]
+                if let results = results as? [NSDictionary] {
+                    let results = results[0]
                 
-                //self.optyName.setText(results["name"])
-                //self.accountName.setText(results["accountname"])
-               // self.optyAmount.setText(results["amount"])
+                    self.optyName.setText(results["Name"] as? String)
+                    
+                    
+                    //get the nested account name
+                    self.accountName.setText(results["Account"]?["Name"]? as? String)
+                    
+                   
+                    let amt = results["Amount"]
+                    if let amt = amt as? NSNumber {
+                        println(amt)
+                        self.optyAmount.setText("$"+amt.stringValue)
+                    }
+                 //self.optyAmount.setText(amt)
                 
                 
                 
                 //   self.userNameLabel.setText("Hello "+reply["username"]!)
                 
-                // for (key, val) in reply {
-                //   println("parent app reponse is \(key): \(val)")
-                //}
+                //for (key, val) in results {
+               //    println("parent app reponse is \(key): \(val)")
+              //  }
             }
             else {
                 // self.userNameLabel.setText("No Response")
                 println("no response")
                 
+            }
             }
         })
 
