@@ -161,5 +161,9 @@ As mentioned above, we are using the standard Mobile SDK functionality of delega
 
 ```
 
+##WatchKit App
+Now it is time to look at the actual app running on the watch. Our simple sample app doesn't current use notifications (I'll be adding these soon and rolling them into the larger tutorial [here](http://quintonwall.github.io/enterprise-ios).) We are using standard long-look interfaces. Here is the storyboard for the app:
+
+
 
 
