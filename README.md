@@ -1,7 +1,7 @@
 #Salesforce Wear Developer Pack for  Apple Watch
 The [Salesforce Wear](https://developer.salesforce.com/wear) Developer Pack for [Apple Watch](https://www.apple.com/watch/) provides a sample app that uses [WatchKit](https://developer.apple.com/watchkit/) and the [Salesforce Mobile SDK for iOS](https://github.com/forcedotcom/SalesforceMobileSDK-iOS) to build connected apps. The app demonstrates typical patterns developers will face when building these connected apps and is intended as a starter project to accelerate the creation of more fully featured apps using the benefits of Apple Watch and the Salesforce1 Platform.
 
-Before we jump into the code, building apps for the Apple Watch requires a quick introduction to a [few important design concepts](http://devstreaming.apple.com/videos/watch/Getting_Started_With_Watchkit/Getting_Started_With_Watchkit_hd.mp4).
+Before we jump into the code, building apps for the Apple Watch requires a quick introduction to a [few important architectural concepts](http://devstreaming.apple.com/videos/watch/Getting_Started_With_Watchkit/Getting_Started_With_Watchkit_hd.mp4). 
 
 ###WatchKit apps are an extension to your phone.
 WatchKit apps are an extension to the app running on your iPhone. This statement often surprises developers, but it is critical in understanding how you design your Apple Watch apps. WatchKit provides interface components and manages bluetooth connectivity, but at the time of writing, the actual app you develop is bundled with an accompanying iOS app. 
@@ -23,7 +23,7 @@ The past year has seen a lot of changes in how app screens are laid out on iOS w
 
 
 ##Salesforce Wear App Blueprint
-WatchKit apps and Salesforce Wear all follow a similar app blueprint on how to authenticate and interact with the Salesforce1 platform. No matter what your intended use case is, you can follow this standard blueprint. We will use this blueprint to create a simple tasks-based app to demonstrate how to use Salesforce Wear.
+WatchKit apps and Salesforce Wear all follow a similar app blueprint on how to authenticate and interact with the Salesforce1 platform. No matter what your intended use case is, you can follow this standard blueprint. We will use this blueprint to create a simple tasks-based app to demonstrate how to use Salesforce Wear. 
 
 ![Salesforce Wear Blueprint](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/blueprint.png)
 
@@ -209,6 +209,8 @@ The code walkthrough above provides an overview of the typical patterns when wor
 
 ##Summary
 The Salesforce Wear Developer Pack for Apple Watch provides a sample implementation and typical patterns when connecting Apple Watch devices to the Salesforce1 Platform. It is intentionally basic, and allows the developer a jumpstart approach to building their own apps by extending this starter app. 
+
+And don't forget that building apps for Apple Watch is different to building apps for iOS devices like the iPhone or iPad. I encourage you to spend some time looking at [Apple's Human Interface Design Guidelines](http://thinkapps.com/blog/design/apple-watch-apps-important-design-principles/) before you start your app.
 
 If you are new to iOS and Salesforce Mobile SDK development, be sure to check out the complete enterprise iOS tutorial [here](http://quintonwall.github.io/enterprise-ios).
 
