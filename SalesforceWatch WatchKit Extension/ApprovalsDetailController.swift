@@ -23,6 +23,14 @@ class ApprovalsDetailController: WKInterfaceController {
     }
     
     @IBAction func approveTapped() {
+        println("Updating record: "+id)
+        
+        let requestBundle = ["request-type" : "approval-update", "id" : id]
+        
+        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+            //back
+        })
+        
     }
     
     override func awakeWithContext(context: AnyObject?) {
@@ -31,6 +39,7 @@ class ApprovalsDetailController: WKInterfaceController {
         //let (recordid, targetobjectid) = context as (String, String)
         let record = context as Dictionary<String, String>
         println(record["recordid"])
+        self.id = record["recordid"]
         let id: NSString = record["targetobjectid"]!
         //println(recordid)
         
@@ -48,7 +57,7 @@ class ApprovalsDetailController: WKInterfaceController {
                     
                     
                     //get the nested account name
-                    self.accountName.setText(results["Account"]?["Name"]? as? String)
+                    //self.accountName.setText(results["Account"]?["Name"]? as? String)
                     
                    
                     let amt = results["Amount"]

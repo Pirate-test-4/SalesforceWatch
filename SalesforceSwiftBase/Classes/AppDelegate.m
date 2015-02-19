@@ -76,7 +76,7 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
     if (self) {
         [SFLogger setLogLevel:SFLogLevelDebug];
         //has to be at least v30 to support approvals via the restful api
-        //[[SFRestAPI sharedInstance] setApiVersion:@"28.0"];
+        [[SFRestAPI sharedInstance] setApiVersion:@"32.0"];
         
         // These SFAccountManager settings are the minimum required to identify the Connected App.
         [SFUserAccountManager sharedInstance].oauthClientId = RemoteAccessConsumerKey;
@@ -89,7 +89,7 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
         
         //TEST
         //force login each time
-        // [[SFAuthenticationManager sharedManager] logout];
+         //[[SFAuthenticationManager sharedManager] logout];
         
         // Blocks to execute once authentication has completed.  You could define these at the different boundaries where
         // authentication is initiated, if you have specific logic for each case.
@@ -168,6 +168,9 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
 {
     
     NSLog(@"HELLO: %@",[SFUserAccountManager sharedInstance].currentUser.fullName);
+   
+    //ApprovalsHandler *handler = [[ApprovalsHandler alloc] init];
+    //[handler getApprovals];
     
     NSString * storyboardName = @"Main";
     NSString * viewControllerID = @"HomeView";
@@ -230,42 +233,7 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
     WatchInfo *winfo = [[WatchInfo alloc] initWithUserInfo:userInfo reply:reply];
     [[NSNotificationCenter defaultCenter] postNotificationName: reqType object:winfo];
     
-    /*
-    //looks like watchkit only likes dictionary objects with primitives in :(
-    if ([reqType isEqualToString:@"userid"]) {
-        NSDictionary *resp = [NSDictionary dictionaryWithObject:[SFUserAccountManager sharedInstance].currentUserId forKey:reqType];
-        [[NSNotificationCenter defaultCenter] postNotificationName: @"WatchKitSaysHello" object:userInfo userInfo:userInfo];
-        reply(resp);
-    } else if ([reqType isEqualToString:@"approval-count"]) {
-        
-        //TODO: can remove the switch statement now if I am keying off reqType
-        
-        WatchInfo *winfo = [[WatchInfo alloc] initWithUserInfo:userInfo reply:reply];
-        [[NSNotificationCenter defaultCenter] postNotificationName: reqType object:winfo];
-       
-        //NSDictionary *resp = [NSDictionary dictionaryWithObject:@"approval" forKey:reqType];
-        //[[NSNotificationCenter defaultCenter] postNotificationName: @"Approval-Count" object:userInfo userInfo:userInfo];
-        //reply(resp);
-        
-    } else {
-        NSDictionary *resp = [NSDictionary dictionaryWithObject:[@"Unknown request type" stringByAppendingString:reqType] forKey:reqType];
-        reply(resp);
-    }
-     */
-    
-    //WatchInfo *winfo = [[WatchInfo alloc] init];
-    // Payload *pl = [[Payload alloc] init];
-    // pl.username = @"jackie";
-    //NSDictionary *resp = [NSDictionary dictionaryWithObject:pl forKey:@"username"];
-    
-    //SFRestAPI *sharedInstance = [SFRestAPI sharedInstance];
-    
-    // NSDictionary *resp = [NSDictionary dictionaryWithObject:[SFUserAccountManager sharedInstance].currentUserId forKey:@"username"];
-    
-    // [[NSNotificationCenter defaultCenter] postNotificationName: @"WatchKitSaysHello" object:userInfo userInfo:userInfo];
-    
-    //looks like watchkit only likes dictionary objects with primitives in :(
-    // reply(resp);
+ 
 }
 
 

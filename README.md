@@ -52,6 +52,7 @@ Our iOS app is pretty simple. It supports authentication and a storyboard with a
 ###AppDelegate.m
 The AppDelegate, the start of your application, is provided by the MobileSDK when you create a new project using forceios. To support WatchKit, we've implemented the handleWatchKitExtensionRequest:
 
+```swift
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply
 {
     NSLog(@"WATCHKIT: %@", userInfo);
@@ -64,7 +65,7 @@ The AppDelegate, the start of your application, is provided by the MobileSDK whe
  
 }
 
-
+```
 
 
 

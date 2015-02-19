@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Home-->
         <scene sceneID="oB5-YO-UsD">
             <objects>
-                <viewController storyboardIdentifier="HomeView" title="Home" id="pFm-w2-oMk" customClass="RootVC" customModule="SalesforceWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeView" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pFm-w2-oMk" customClass="RootVC" customModule="SalesforceWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kwO-69-MRm"/>
                         <viewControllerLayoutGuide type="bottom" id="kN8-ZP-d4S"/>
@@ -16,46 +16,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is your starting view in the Main storyboard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Gf-Akl">
-                                <rect key="frame" x="169" y="234" width="263" height="114"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salesforce-logo-big" translatesAutoresizingMaskIntoConstraints="NO" id="Wca-QG-dht">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="263" id="lX2-Q1-Bsg"/>
+                                    <constraint firstAttribute="height" constant="238" id="4FX-ed-E26"/>
+                                    <constraint firstAttribute="width" constant="200" id="VqL-S7-oOg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4FX-ed-E26"/>
+                                        <exclude reference="VqL-S7-oOg"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4FX-ed-E26"/>
+                                        <include reference="VqL-S7-oOg"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Watch Sample" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SR-eW-216">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3GU-No-3e3">
-                                <rect key="frame" x="201" y="356" width="184" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="184" id="6Uy-Fy-Jlf"/>
-                                </constraints>
-                                <state key="normal" title="Say Something Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="responseTapped:" destination="pFm-w2-oMk" eventType="touchUpInside" id="Cor-3J-lxE"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.039676963404643641" green="0.36375362027473318" blue="0.57607222576530615" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="3GU-No-3e3" secondAttribute="centerX" id="7YW-cs-ye5"/>
-                            <constraint firstItem="cPw-Gf-Akl" firstAttribute="centerX" secondItem="ie5-N4-KIo" secondAttribute="centerX" id="BWo-bZ-iaS"/>
-                            <constraint firstItem="kN8-ZP-d4S" firstAttribute="top" secondItem="cPw-Gf-Akl" secondAttribute="bottom" constant="252" id="Kgl-cJ-sLP"/>
-                            <constraint firstItem="3GU-No-3e3" firstAttribute="top" secondItem="cPw-Gf-Akl" secondAttribute="bottom" constant="8" symbolic="YES" id="OP7-Ea-cB6"/>
-                            <constraint firstItem="cPw-Gf-Akl" firstAttribute="top" secondItem="kwO-69-MRm" secondAttribute="bottom" constant="214" id="asf-k2-Y0X"/>
+                            <constraint firstItem="kN8-ZP-d4S" firstAttribute="top" secondItem="8SR-eW-216" secondAttribute="bottom" constant="230" id="25q-qb-pLU">
+                                <variation key="widthClass=compact" constant="221"/>
+                            </constraint>
+                            <constraint firstItem="8SR-eW-216" firstAttribute="top" secondItem="Wca-QG-dht" secondAttribute="bottom" constant="16" id="7hW-qJ-Xd9">
+                                <variation key="widthClass=compact" constant="1"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="8SR-eW-216" secondAttribute="centerX" id="ZTe-Cf-UMS">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="Wca-QG-dht" secondAttribute="centerX" id="fxV-b1-HDT"/>
+                            <constraint firstAttribute="centerY" secondItem="Wca-QG-dht" secondAttribute="centerY" id="lkT-AR-X7D">
+                                <variation key="widthClass=compact" constant="85"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Wca-QG-dht"/>
+                                <exclude reference="8SR-eW-216"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7hW-qJ-Xd9"/>
+                                <exclude reference="ZTe-Cf-UMS"/>
+                                <exclude reference="25q-qb-pLU"/>
+                                <exclude reference="fxV-b1-HDT"/>
+                                <exclude reference="lkT-AR-X7D"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wca-QG-dht"/>
+                                <include reference="8SR-eW-216"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7hW-qJ-Xd9"/>
+                                <include reference="ZTe-Cf-UMS"/>
+                                <include reference="25q-qb-pLU"/>
+                                <include reference="fxV-b1-HDT"/>
+                                <include reference="lkT-AR-X7D"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <connections>
-                        <outlet property="homeLabel" destination="cPw-Gf-Akl" id="eAr-Ap-xGO"/>
-                        <outlet property="responseButton" destination="3GU-No-3e3" id="CfW-cv-KJY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4g-y3-sMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="399" y="519"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="salesforce-logo-big" width="699" height="489"/>
+    </resources>
 </document>

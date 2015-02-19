@@ -30,15 +30,13 @@ class RootVC: UIViewController {
 
     let approvalsHandler: ApprovalsHandler = ApprovalsHandler()
     
-    @IBOutlet weak var homeLabel: UILabel!
-    @IBOutlet weak var responseButton: UIButton!
-   
     
     //  #pragma mark - view lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = " Mobile SDK & Salesforce Watch Sample App"
+        self.title = " Mobile SDK & Apple Watch Sample App"
+        
         
         //let userDefaults = NSUserDefaults(suiteName: "group.com.salesforce.SalesforceWatch")
        // let data = "jack".dataUsingEncoding(NSUTF8StringEncoding)
@@ -60,22 +58,28 @@ class RootVC: UIViewController {
             name: "approval-details",
             object: nil)
         
-        homeLabel.text = "VC"
         
         
-        var sharedInstance = SFRestAPI.sharedInstance()
+        
+       
+        
+        //[SFUserAccountManager sharedInstance].currentUser.fullName);
+       
+        
+        //tmp test
+        
+        approvalsHandler.getApprovals()
+        //approvalsHandler.updateApproval("04gj00000000pUpAAI", status: "Approved")
         
               
     }
     
     
     
-    //TODO: move to separate handlers with observers
-    // right now this is easier to debug due to the sep watch schemes. I can add debug to a visual label
+    
     func handleWatchKitNotification(notification: NSNotification) {
         
         println("Got a watch notification")
-        homeLabel.text = "Got notification: "+notification.name
         
         //do this before any handler methods.
         if let watchInfo = notification.object as? WatchInfo {
@@ -85,31 +89,31 @@ class RootVC: UIViewController {
         
         
         if(notification.name == "approval-count") {
-            homeLabel.text = "Approval Count Notification"
+           // homeLabel.text = "Approval Count Notification"
             self.approvalsHandler.getApprovals()
             
         } else if (notification.name == "approval-details") {
-            homeLabel.text = "Approval Details Notification"
+           // homeLabel.text = "Approval Details Notification"
             if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
                 if let s = info["id"] {
-                    homeLabel.text = s
+                   
                     self.approvalsHandler.getTargetObjectDetails(s)
                 }
-            
             }
-        
+        } else if (notification.name == "approval-update") {
+                // homeLabel.text = "Approval Details Notification"
+            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                if let s = info["id"] {
+                    self.approvalsHandler.updateApproval(s, status: "Approved")
+                }
+                    
+            }
         }
     
     //end
     }
     
-    @IBAction func responseTapped(sender: AnyObject) {
-       
-        self.approvalsHandler.getApprovals()
-        
-   }
-    
-
+   
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }

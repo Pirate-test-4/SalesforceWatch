@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>907AB5B5-87C7-4333-88D2-1310297F7A16</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SalesforceWatch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5ECC612C25BEC5C2A9B37D89949B3DDD41087C89</key>
+		<string>github.com:quintonwall/SalesforceWatch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SalesforceWatch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5ECC612C25BEC5C2A9B37D89949B3DDD41087C89</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:quintonwall/SalesforceWatch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5ECC612C25BEC5C2A9B37D89949B3DDD41087C89</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5ECC612C25BEC5C2A9B37D89949B3DDD41087C89</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SalesforceWatch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
