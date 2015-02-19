@@ -29,14 +29,14 @@ The past year has seen a lot of changes in how app screens are laid out on iOS w
 ##Salesforce Wear App Blueprint
 WatchKit apps and Salesforce Wear all follow a similar app blueprint on how to authenticate and interact with the Salesforce1 platform. No matter what your intended use case is, you can follow this standard blueprint. We will use this blueprint to create a simple tasks-based app to demonstrate how to use Salesforce Wear.
 
-![Salesforce Wear Blueprint](images/blueprint.png)
+![Salesforce Wear Blueprint](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/blueprint.png)
 
 ###Communicating with your iOS App
 As mentioned previously, WatchKit apps are an extension to your iOS App. WatchKit provides the underlying bluetooth communication between watch and phone, but as a developer, it is your responsibility to handle messaging. Generally, there are two approaches: App Groups and Observers. 
 
 App Groups allow the sharing of data between different apps within a single project/bundle (remember an iOS app and Apple Watch app are created in the same project, or bundle). Once enabled, App Groups work like a key/value store. In practice, I have found they are a little cumbersome to work with on bigger watch kit apps. 
 
-![App Bundles](images/app-bundles.png)
+![App Bundles](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/app-bundles.png)
 
 Observers work similar to selectors and delegates in iOS: you register an observer to handle a specific request, implement handleWatchKitNotification in your iOS app, create a response block, and you are good to go. Observers allow a more object-oriented and modern approach to handling communications. It's personal preference, but the developer pack and sample app uses observers. We like them. You should too.
 
@@ -164,6 +164,6 @@ As mentioned above, we are using the standard Mobile SDK functionality of delega
 ##WatchKit App
 Now it is time to look at the actual app running on the watch. Our simple sample app doesn't current use notifications (I'll be adding these soon and rolling them into the larger tutorial [here](http://quintonwall.github.io/enterprise-ios).) We are using standard long-look interfaces. Here is the storyboard for the app:
 
-
+![watch app storyboard](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/storyboard.png)
 
 
