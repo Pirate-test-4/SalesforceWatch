@@ -31,12 +31,9 @@ class InterfaceController: WKInterfaceController {
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+
         super.willActivate()
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateExtension"), name: NSUserDefaultsDidChangeNotification, object: nil)
         self.getApprovalList()
-        
-        
     }
 
     override func didDeactivate() {
@@ -60,13 +57,7 @@ class InterfaceController: WKInterfaceController {
                 self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(self.approvalsResult.count))
                
                 
-                
-             //   self.userNameLabel.setText("Hello "+reply["username"]!)
-                
-               // for (key, val) in reply {
-                 //   println("parent app reponse is \(key): \(val)")
-                //}
-            }
+        }
             else {
                // self.userNameLabel.setText("No Response")
                println("no response")
