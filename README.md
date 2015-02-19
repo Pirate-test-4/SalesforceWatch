@@ -39,7 +39,7 @@ Observers work similar to selectors and delegates in iOS: you register an observ
 ##Sample App
  This Salesforce Wear developer pack provides a complete implementation of  a basic approvals app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/quintonwall/SalesforceWatch).
 
-<INSERT YOUTUBE VIDEO HERE>
+[Sample Application](http://youtu.be/cQRvR6PFdhU)
 
 ##iOS App 
 Our iOS app is pretty simple. It supports authentication and a storyboard with a view controller for you to extend. The code includes all the hooks, and sample code you need to implement your own WatchKit logic. Let's walk through the logic on the phone now.
