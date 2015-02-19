@@ -38,16 +38,15 @@ App Groups allow the sharing of data between different apps within a single proj
 
 ![App Bundles](images/app-bundles.png)
 
-Observers work similar to selectors and delegates in iOS: you register an observer to handle a specific request, implement handleWatchKitNotification in your iOS app, create a response block, and you are good to go. Observers allow a more object-oriented and modern approach to handling communications. It's personal preference, but in the sample app provided below, we will use observers. The code is intentionally simple, but would not take much to make it much more extensible with a [chain of responsibility pattern](http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern).
-
+Observers work similar to selectors and delegates in iOS: you register an observer to handle a specific request, implement handleWatchKitNotification in your iOS app, create a response block, and you are good to go. Observers allow a more object-oriented and modern approach to handling communications. It's personal preference, but the developer pack and sample app uses observers. We like them. You should too.
 
 ##Sample App
- This Salesforce Wear developer pack provides a complete implementation of  a basic task list app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/quintonwall/SalesforceWatch).
+ This Salesforce Wear developer pack provides a complete implementation of  a basic approvals app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/quintonwall/SalesforceWatch).
 
 <INSERT YOUTUBE VIDEO HERE>
 
 ##iOS App 
-Our iOS app is pretty simple. It supports authentication and a storyboard with a view controller for you to extend. The code includes all the hooks, and sample code you need to implement your own Apple Watch logic. Let's walk through the logic now.
+Our iOS app is pretty simple. It supports authentication and a storyboard with a view controller for you to extend. The code includes all the hooks, and sample code you need to implement your own Apple Watch logic. Let's walk through the logic on the phone now.
 
 ###AppDelegate.m
 The AppDelegate, the start of your application, is provided by the MobileSDK when you create a new project using forceios. To support WatchKit, we've implemented the handleWatchKitExtensionRequest:
@@ -66,7 +65,101 @@ The AppDelegate, the start of your application, is provided by the MobileSDK whe
 }
 
 ```
+handleWatchKitExtension expects an NSDictionary object to be passed back and forth between the extension (the watch app) and the iOS app. For our application, we will use the request-type key to identify which action to perform (get tasks, update task etc).  Then, all we have to do is post the request to the iOS notification center which will handle passing the event to any observers we have registered.
 
+##RootVC.swift
+The RootVC is the view controller of our extremely simple user interface. In fact, there is really no need to have an interface at all, but a typical Apple Watch app would have a counterpart app on the phone. When designing Apple Watch apps, always keep in mind the functionality that you want to include. For example, if we wanted to create new approvals, doing this on the Watch would be pretty painful (would you want a keyboard that small even if you could?).  
+
+Our full featured task app would allow the user to create approvals on the phone and have access to any approvals assigned to them via the Watch for quick approve/decline requests on the go. (If you are interested in learning how to make a complete app, check out the enterprise ios tutorials [here](http://quintonwall.github.io/enterprise-ios))
+
+Our sample app uses the RootVC.swift controller to register the observers we need to listen for WatchKit events.
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
+            name: "approval-count",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
+            name: "approval-details",
+            object: nil)
+```
+
+And handle them.  (The code below is intentionally simple, but would not take much to make it much more extensible with a [chain of responsibility pattern](http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) or use register separate classes as observers.)
+
+
+```swift
+
+func handleWatchKitNotification(notification: NSNotification) {
+        
+        println("Got a watch notification")
+        
+        //do this before any handler methods.
+        if let watchInfo = notification.object as? WatchInfo {
+            self.approvalsHandler.watchInfo = watchInfo
+        }
+        
+        
+        
+        if(notification.name == "approval-count") {
+           // homeLabel.text = "Approval Count Notification"
+            self.approvalsHandler.getApprovals()
+            
+        } else if (notification.name == "approval-details") {
+           // homeLabel.text = "Approval Details Notification"
+            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                if let s = info["id"] {
+                   
+                    self.approvalsHandler.getTargetObjectDetails(s)
+                }
+            }
+        } else if (notification.name == "approval-update") {
+                // homeLabel.text = "Approval Details Notification"
+            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                if let s = info["id"] {
+                    self.approvalsHandler.updateApproval(s, status: "Approved")
+                }
+                    
+            }
+        }
+    
+    //end
+    }
+```
+
+##ApprovalsHandler.swift
+To encapsulate logic that handles communicating via the MobileSDK, we've created a handler class, ApprovalsHandler. Let's look at the getApprovals function. For anyone familar with the MobileSDK, you will notice that this is pretty standard functionality: execute a query, and send the response to a delegate (which happens to be our handler class.)
+
+```swift
+
+ func getApprovals() {
+        
+        
+        var sharedInstance = SFRestAPI.sharedInstance()
+     
+         var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance order by LastModifiedDate")
+                
+       sharedInstance.send(request as SFRestRequest, delegate: self)
+   }
+
+```
+
+As mentioned above, we are using the standard Mobile SDK functionality of delegates for handling responses. ApprovalsHandler.swift implements the didLoadResponse function defined SFRestDelegate. Within this method we are using a reply block to asynchronously send the data from Salesforce back to the watch. Good news is that you can use this pattern without any change in your own apps. (Getting the communication with iOS app and WatchKit app is the hardest part of Apple Watch development. This developer pack takes care of it for you)
+
+```swift
+
+  func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
+        var records = jsonResponse.objectForKey("records") as NSArray
+        println("request:GOT APPROVALS: #records: \(records.count)");
+        
+        //send the block back to le watch
+        if let watchInfo = watchInfo {
+            let stuff = ["results" : records]
+            watchInfo.replyBlock(stuff)
+        }
+       
+    }
+
+```
 
 
 

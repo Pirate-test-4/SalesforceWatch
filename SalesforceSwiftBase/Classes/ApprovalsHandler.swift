@@ -18,13 +18,10 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     
     func getApprovals() {
         
-        //TODO: /services/data/v32.0/process/approvals
         
         var sharedInstance = SFRestAPI.sharedInstance()
      
-        //var approvalsPath: String = "/v"+sharedInstance.apiVersion+"/process/approvals/"
-        //var request: AnyObject! = SFRestRequest.requestWithMethod(SFRestMethodGET, path: approvalsPath, queryParams: nil)
-        var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance order by LastModifiedDate")
+         var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance order by LastModifiedDate")
         
 
         
@@ -43,31 +40,10 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     //TODO
     func updateApproval(targetobjectid: NSString, status: NSString) {
         var sharedInstance = SFRestAPI.sharedInstance()
-        
-        /*
-          sample:
-
-            {
-                "requests" : [{
-                "actionType" : "Approve",
-                "contextId" : "04ij000000008zT",
-                "comments" : "this record is approved"}]
-            }
-
-        */
-        //let request = sharedInstance.r
-        //let request = sharedInstance.requestForUpdateWithObjectType("Approvals", objectId: targetobjectid, fields: ["ActionType" : status])
-        
+      
         //first, let's get the workitem id that we need to use to update to processItem
         var wireq = sharedInstance.requestForQuery("select id from ProcessInstanceWorkItem where processinstanceid = '"+targetobjectid+"'")
         
-        //var s = "{ \"requests\" : [{ \"actionType\" : \"Approve\", \"contextId\" : \"04gj00000000pUpAAI\", \"comments\" : \"Approved from Salesforce Watch\" }]}"
-        
-        // SELECT Id, ProcessInstanceId FROM ProcessInstanceWorkitem
-       // let request: AnyObject! = SFRestRequest.requestWithMethod(SFRestMethodPOST, path: "/services/data/v30.0/process/approvals", queryParams: s)
-        
-        //todo: change to blocks
-       // sharedInstance.send(request as SFRestRequest, delegate: self)
     }
     
     
