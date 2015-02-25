@@ -49,7 +49,7 @@ class Chevron {
             
         }
         
-        println("Chevron providing image name "+imageName)
+        println("Chevron providing image name "+(imageName as String))
         return imageName
     }
 }

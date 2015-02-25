@@ -54,7 +54,7 @@ class InterfaceController: WKInterfaceController {
                 self.pendingApprovalsButton.setTitle(resultsCount)
                 //max out at 360...but anyone with that many approvals should be fired
                 //self.pendingApprovalsButton.setBackgroundImageNamed("glance-"+resultsCount)
-                self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(self.approvalsResult.count))
+                self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(self.approvalsResult.count) as String)
                
                 
         }

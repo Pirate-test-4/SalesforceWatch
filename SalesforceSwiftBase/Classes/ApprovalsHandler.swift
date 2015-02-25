@@ -31,7 +31,7 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     func getTargetObjectDetails(targetobjectid: NSString) {
         
         var sharedInstance = SFRestAPI.sharedInstance()
-        var request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+targetobjectid+"'")
+        var request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+(targetobjectid as String)+"'")
         
         sharedInstance.send(request as SFRestRequest, delegate: self)
         
@@ -42,14 +42,14 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         var sharedInstance = SFRestAPI.sharedInstance()
       
         //first, let's get the workitem id that we need to use to update to processItem
-        var wireq = sharedInstance.requestForQuery("select id from ProcessInstanceWorkItem where processinstanceid = '"+targetobjectid+"'")
+        var wireq = sharedInstance.requestForQuery("select id from ProcessInstanceWorkItem where processinstanceid = '"+(targetobjectid as String)+"'")
         
     }
     
     
     
     func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
-        var records = jsonResponse.objectForKey("records") as NSArray
+        var records = jsonResponse.objectForKey("records") as! NSArray
         println("request:GOT APPROVALS: #records: \(records.count)");
         
         //send the block back to le watch
