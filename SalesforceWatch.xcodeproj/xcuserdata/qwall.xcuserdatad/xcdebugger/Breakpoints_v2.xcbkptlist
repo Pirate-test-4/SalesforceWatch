@@ -312,6 +312,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.awakeWithContext (SalesforceWatch_WatchKit_Extension.ApprovalsDetailController)(Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443063173.912961"
                   startingColumnNumber = "9223372036854775807"
@@ -326,6 +327,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.(awakeWithContext (SalesforceWatch_WatchKit_Extension.ApprovalsDetailController) -&gt; (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443063173.914623"
                   startingColumnNumber = "9223372036854775807"
@@ -340,6 +342,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ()) to @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ())"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443063173.914978"
                   startingColumnNumber = "9223372036854775807"
@@ -354,6 +357,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ()) to @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ())"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443063173.915191"
                   startingColumnNumber = "9223372036854775807"
@@ -450,6 +454,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.(awakeWithContext (SalesforceWatch_WatchKit_Extension.ApprovalsDetailController) -&gt; (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443069256.96705"
                   startingColumnNumber = "9223372036854775807"
@@ -464,6 +469,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@unowned ObjectiveC.NSCopying) -&gt; (@autoreleased Swift.Optional&lt;Swift.AnyObject&gt;) to @callee_owned (@owned ObjectiveC.NSCopying) -&gt; (@owned Swift.Optional&lt;Swift.AnyObject&gt;)"
                   moduleName = "SalesforceWatch WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qwall/git/2015/ios/SalesforceWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
                   timestampString = "443069256.967256"
                   startingColumnNumber = "9223372036854775807"
@@ -503,8 +509,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "request(_:didLoadResponse:)"
-            landmarkType = "5">
+            landmarkName = "ApprovalsHandler"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -519,8 +525,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "request(_:didFailLoadWithError:)"
-            landmarkType = "5">
+            landmarkName = "ApprovalsHandler"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -535,8 +541,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "getTargetObjectDetails(_:)"
-            landmarkType = "5">
+            landmarkName = "ApprovalsHandler"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -551,7 +557,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "getApprovals()"
+            landmarkName = "getTargetObjectDetails(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
