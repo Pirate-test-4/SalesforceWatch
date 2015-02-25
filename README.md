@@ -1,6 +1,8 @@
 #Salesforce Wear Developer Pack for  Apple Watch
 The [Salesforce Wear](https://developer.salesforce.com/wear) Developer Pack for [Apple Watch](https://www.apple.com/watch/) provides a sample app that uses [WatchKit](https://developer.apple.com/watchkit/) and the [Salesforce Mobile SDK for iOS](https://github.com/forcedotcom/SalesforceMobileSDK-iOS) to build connected apps. The app demonstrates typical patterns developers will face when building these connected apps and is intended as a starter project to accelerate the creation of more fully featured apps using the benefits of Apple Watch and the Salesforce1 Platform.
 
+![Salesforce Wear Watch App](https://github.com/quintonwall/SalesforceWatch/blob/master/watch-mockup.png)
+
 Before we jump into the code, building apps for the Apple Watch requires a quick introduction to a [few important architectural concepts](http://devstreaming.apple.com/videos/watch/Getting_Started_With_Watchkit/Getting_Started_With_Watchkit_hd.mp4). 
 
 ###WatchKit apps are an extension to your phone.
