@@ -2,8 +2,8 @@
 //  RingHelper.swift
 //  SalesforceWatch
 // 
-// AppleWatch currently doesnt support animations. Let's make a little
-// wrapper to create a chevron-based ring graphic
+// 
+// wrapper to create a chevron-based ring graphic. TODO: use image animations in v2
 //
 //  Created by Quinton Wall on 1/13/15.
 //  Copyright (c) 2015 Salesforce, Inc. All rights reserved.
