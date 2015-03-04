@@ -40,6 +40,8 @@ Observers work similar to selectors and delegates in iOS: you register an observ
 
 ##Sample App
  This Salesforce Wear developer pack provides a complete implementation of  a basic approvals app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/quintonwall/SalesforceWatch), and watch a video of the finished app [here](http://www.youtube.com/watch?v=cQRvR6PFdhU).
+ 
+*Note:* This the code and dev park uses iOS 8.2 and Swift 1.2. Please make sure that you have the appropriate targets set for this. At the time of writing, iOS 8.3 (beta 2) and xCode 6.3 (beta 2) appear to have a bug in the WebView implementation when run via the simulator. The bug manifests itself in an inability to click the login button on the Salesforce authentication screen. 
 
 ##iOS App 
 Our iOS app is pretty simple. It supports authentication and a storyboard with a view controller for you to extend. The code includes all the hooks, and sample code you need to implement your own WatchKit logic. Let's walk through the logic on the phone now.
@@ -205,6 +207,12 @@ private func getApprovalList() {
 
 
 ```
+
+###Running the app
+At the time of writing, WatchKit apps, operate as a separate target within your xCode project. In order to run the sample app, you must: 
+* Run the SalesforceWatch (iphone) target first and log into the app via the simulator. (Remember an Apple Watch app is an extension to an iPhone app. We are still using the iPhone and the Salesforce Mobile SDK for iOS to handle authentication and communications to the Salesforce1 Platform.
+* Ensure that you have the Apple Watch simulator visible. To enable this, select Hardware->External Displays->Apple Watch 38/42mm from the iOS simulator app menu.
+* Switch targets within your xCode project, choosing "SalesforceWatch WatchKit App" and run your app. The watch simulator will now run (you should see a little update animation and eventually a ring with the number of approvals in your Salesforce org)
 
 ###Further implementations
 The code walkthrough above provides an overview of the typical patterns when working with WatchKit apps and iOS apps that use the Mobile SDK for Salesforce. You can check out the *ApprovalsInterfaceController.swift* and *ApprovalsDetailsController.swift* for more examples, but the pattern is identical to those described above.
