@@ -37,7 +37,7 @@ class ApprovalsDetailController: WKInterfaceController {
         precondition(context is Dictionary<String, String> , "Expected class of `context` to be dictionary containing record and targetobjectid.")
         
         //let (recordid, targetobjectid) = context as (String, String)
-        let record = context as! Dictionary<String, String>
+        let record = context as Dictionary<String, String>
         println(record["recordid"])
         self.id = record["recordid"]
         let id: NSString = record["targetobjectid"]!

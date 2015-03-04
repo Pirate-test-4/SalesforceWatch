@@ -18,7 +18,7 @@ class ApprovalsInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         precondition(context is NSArray, "Expected class of `context` to be NSArray.")
         
-        let approvals = context as! NSArray
+        let approvals = context as NSArray
         
        // listDocument = ListDocument(fileURL: listInfo.URL)
         
@@ -44,9 +44,9 @@ class ApprovalsInterfaceController: WKInterfaceController {
         println(resultsTable.numberOfRows)
         
         for (index, record) in enumerate(results) {
-           let row = resultsTable.rowControllerAtIndex(index)as! ApprovalDetailsRowController
+           let row = resultsTable.rowControllerAtIndex(index) as ApprovalDetailsRowController
        
-            var s: NSDictionary = record as! NSDictionary
+            var s: NSDictionary = record as NSDictionary
             row.image.setImageNamed(s["Status"] as? String)
             row.recordid = s["Id"] as? String
             row.opportunityId = s["TargetObjectId"] as? String
