@@ -162,11 +162,11 @@ As mentioned above, we are using the standard Mobile SDK functionality of delega
 ##WatchKit App
 Now it is time to look at the actual app running on the watch. Our simple sample app doesn't current use notifications (I'll be adding these soon and rolling them into the larger tutorial [here](http://quintonwall.github.io/enterprise-ios).) We are using standard long-look interfaces. Here is the storyboard for the app:
 
-![watch app storyboard](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/storyboard.png)
+![watch app storyboard](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/readme-images/storyboard-glances.png)
 
-Let's look at our main controller, *InterfaceController*. As soon as the app is about to activate, we fetch the list of approvals and display them in a funky little graphical representation. 
+Let's look at our glance controller, *GlanceController*. As soon as the app is about to activate, we fetch the list of approvals and display them in a funky little graphical representation plus some indication of which records are approved, pending, rejected.
 
-**Note**: Using a glance for this function is technically the right choice. Implementation-wise, glances and standard interfaces work exactly the same, however glances are more efficient in regards to memory and battery usage (your entire app isn't loaded, just a glance into it, so to speak), and allow you to take contextual information and determine which standard interface controller to start your app from. Think of a glance as your traffic copy and entry point to your app. The next version of the developer pack will update the interface to use glances.
+**Note**: The sample app uses a glance, but it also includes another controller, *InterfaceController* to demonstrate an alternate view for the user. Both *InterfaceController* and *GlanceController* direct to the main controller, *ApprovalsInterfaceController* as defined in the storyboard.
 
 ```swift
 override func willActivate() {
