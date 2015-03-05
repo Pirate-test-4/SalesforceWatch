@@ -40,11 +40,11 @@
 		82BBB5A71793944400374DD8 /* libSalesforceOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5A61793944400374DD8 /* libSalesforceOAuth.a */; };
 		82BBB5C01793946800374DD8 /* libSalesforceSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5BF1793946800374DD8 /* libSalesforceSDKCore.a */; };
 		82F6F66A18E4D0280033CACD /* libSalesforceSecurity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */; };
+		E70B0DEB1AA7C2F7006E8CDE /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */; };
 		E70BBE6B1A643BB000D0926F /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BBE6A1A643BB000D0926F /* WatchInfo.swift */; };
 		E71F944A1A65956400FE7769 /* ApprovalsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71F94491A65956400FE7769 /* ApprovalsHandler.swift */; };
 		E725F9A81A5B45A200D6203C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E725F9A71A5B45A200D6203C /* Main.storyboard */; };
 		E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */; };
-		E725F9D81A5C8A4A00D6203C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E725F9D71A5C8A4A00D6203C /* Images.xcassets */; };
 		E725F9DC1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */; };
 		E725F9E91A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */; };
@@ -215,6 +215,7 @@
 		82F6F66718E4D0280033CACD /* SFPasscodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeManager.h; sourceTree = "<group>"; };
 		82F6F66818E4D0280033CACD /* SFPasscodeProviderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeProviderManager.h; sourceTree = "<group>"; };
 		82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSalesforceSecurity.a; sourceTree = "<group>"; };
+		E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		E70BBE6A1A643BB000D0926F /* WatchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		E71A65DA1A5DD4E800179F5E /* SalesforceWatch WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SalesforceWatch WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E71F94491A65956400FE7769 /* ApprovalsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsHandler.swift; sourceTree = "<group>"; };
@@ -222,7 +223,6 @@
 		E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SalesforceWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E725F9D41A5C8A4A00D6203C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		E725F9D71A5C8A4A00D6203C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SalesforceWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E725F9E11A5C8A4A00D6203C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E725F9F11A5C8E7800D6203C /* SalesforceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SalesforceWatch.entitlements; sourceTree = SOURCE_ROOT; };
@@ -672,7 +672,6 @@
 				E7F7F5AA1A66E055003CFD1C /* Helpers */,
 				E7F7F5A91A66E04A003CFD1C /* Glances */,
 				E7F7F5A81A66E032003CFD1C /* Interfaces */,
-				E725F9D71A5C8A4A00D6203C /* Images.xcassets */,
 				E71A65DA1A5DD4E800179F5E /* SalesforceWatch WatchKit Extension.entitlements */,
 				E725F9D31A5C8A4A00D6203C /* Supporting Files */,
 			);
@@ -719,6 +718,7 @@
 		E7F7F5A91A66E04A003CFD1C /* Glances */ = {
 			isa = PBXGroup;
 			children = (
+				E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */,
 			);
 			name = Glances;
 			sourceTree = "<group>";
@@ -858,7 +858,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E725F9DC1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app in Resources */,
-				E725F9D81A5C8A4A00D6203C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +894,7 @@
 				E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */,
 				E7F7F5B01A6738D2003CFD1C /* SalesforceObjectType.swift in Sources */,
 				E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */,
+				E70B0DEB1AA7C2F7006E8CDE /* GlanceController.swift in Sources */,
 				E7F7F5AE1A66EE66003CFD1C /* ApprovalsInterfaceController.swift in Sources */,
 				E7F7F5A51A65C849003CFD1C /* Chevron.swift in Sources */,
 			);
@@ -952,7 +952,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,7 +977,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

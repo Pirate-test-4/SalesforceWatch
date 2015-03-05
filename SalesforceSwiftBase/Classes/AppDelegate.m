@@ -76,12 +76,13 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
     if (self) {
         [SFLogger setLogLevel:SFLogLevelDebug];
         //has to be at least v30 to support approvals via the restful api
-        [[SFRestAPI sharedInstance] setApiVersion:@"32.0"];
         
         // These SFAccountManager settings are the minimum required to identify the Connected App.
         [SFUserAccountManager sharedInstance].oauthClientId = RemoteAccessConsumerKey;
         [SFUserAccountManager sharedInstance].oauthCompletionUrl = OAuthRedirectURI;
         [SFUserAccountManager sharedInstance].scopes = [NSSet setWithObjects:@"web", @"api", nil];
+       // [[SFRestAPI sharedInstance] setApiVersion:@"32.0"];
+
         
         // Auth manager delegate, for receiving logout and login host change events.
         [[SFAuthenticationManager sharedManager] addDelegate:self];

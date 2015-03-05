@@ -51,9 +51,11 @@ class InterfaceController: WKInterfaceController {
             if let reply = reply as? [String: NSArray] {
                 self.approvalsResult = reply["results"]
                 var resultsCount = String(self.approvalsResult.count)
+                
+                //UIKit on Apple Watch is currently a little limiting. This is an example of using a button to creatively display a visual indicator
+                //check out the glance scene and GlanceController for the 'official' way of handling animations in WatchKit.
                 self.pendingApprovalsButton.setTitle(resultsCount)
-                //max out at 360...but anyone with that many approvals should be fired
-                //self.pendingApprovalsButton.setBackgroundImageNamed("glance-"+resultsCount)
+            
                 self.pendingApprovalsButton.setBackgroundImageNamed(Chevron.getChevronImage(self.approvalsResult.count) as String)
                
                 

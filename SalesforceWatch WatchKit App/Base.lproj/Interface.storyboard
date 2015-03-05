@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="13F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--ApprovalsHome-->
@@ -24,6 +24,32 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="121" y="135"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="yXg-kp-2ra">
+            <objects>
+                <glanceController id="Xor-ry-Wed" customClass="GlanceController" customModule="SalesforceWatch_WatchKit_Extension">
+                    <items>
+                        <group alignment="left" id="Z7n-CG-ZL6">
+                            <items>
+                                <label width="1" height="1" alignment="center" text="Approvals" textAlignment="center" id="wVa-h3-2Jc">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group alignment="left" id="TqD-14-lYS">
+                            <items>
+                                <imageView width="110" height="110" alignment="center" verticalAlignment="center" id="rWA-HP-fdJ" userLabel="CounterRing"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="counterRing" destination="rWA-HP-fdJ" id="Hih-9g-kmi"/>
+                        <outlet property="titleLabel" destination="wVa-h3-2Jc" id="UPZ-V8-Xd6"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="119" y="437"/>
         </scene>
         <!--ApprovalsList-->
         <scene sceneID="GCv-1y-TH3">
