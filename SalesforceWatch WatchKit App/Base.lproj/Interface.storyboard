@@ -67,6 +67,9 @@
                                                 <fontDescription key="font" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                             </label>
                                         </items>
+                                        <connections>
+                                            <segue destination="U9H-nh-57k" kind="modal" id="ayt-jj-7sM"/>
+                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="detailLabel" destination="GlT-2O-ed7" id="gdR-TK-Os5"/>
@@ -76,12 +79,54 @@
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="kbW-Tn-Tl1">
+                        <items>
+                            <menuItem title="Approve" icon="accept" id="lL8-QR-i3V" userLabel="Approve"/>
+                            <menuItem title="Reject" icon="decline" id="70F-Sz-fPe" userLabel="Reject"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="resultsTable" destination="84r-ea-9RI" id="Wjr-ss-S2r"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="368" y="325"/>
+        </scene>
+        <!--Approvals Detail Controller-->
+        <scene sceneID="x5s-Pk-e04">
+            <objects>
+                <controller id="U9H-nh-57k" customClass="ApprovalsDetailController" customModule="SalesforceWatch_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="Mxo-Zy-fmN">
+                            <items>
+                                <label alignment="center" text="OptyName" id="ZSg-ss-shH"/>
+                            </items>
+                        </group>
+                        <label alignment="center" text="OptyAmount" id="fvd-Wy-Qf8"/>
+                        <group width="1" height="56" alignment="center" verticalAlignment="center" id="znK-Xd-luF">
+                            <items>
+                                <button width="1" alignment="left" title="Reject" id="sJ2-3N-tGQ">
+                                    <connections>
+                                        <action selector="rejectTapped" destination="U9H-nh-57k" id="9Li-jc-erc"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Approve" id="yZ5-WR-5zo">
+                            <connections>
+                                <action selector="approveTapped" destination="U9H-nh-57k" id="ILu-Ug-v3f"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="approveButton" destination="yZ5-WR-5zo" id="6rd-fV-b17"/>
+                        <outlet property="optyAmount" destination="fvd-Wy-Qf8" id="zSx-ks-qK2"/>
+                        <outlet property="optyName" destination="ZSg-ss-shH" id="LQR-E7-5gt"/>
+                        <outlet property="rejectButton" destination="sJ2-3N-tGQ" id="Gju-UT-XQl"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="570" y="324"/>
         </scene>
     </scenes>
 </document>

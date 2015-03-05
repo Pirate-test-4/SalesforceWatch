@@ -689,5 +689,79 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SalesforceWatch WatchKit Extension/ApprovalsDetailController.swift"
+            timestampString = "447288297.188908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ApprovalsDetailController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.approveButton.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.WKInterfaceButton&gt;"
+                  moduleName = "SalesforceWatch WatchKit Extension"
+                  urlString = "file:///Users/qwall/Dropbox/git/2015/quintonwall/SalesforceWear-DevPack-For-AppleWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
+                  timestampString = "447288297.206891"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.approveButton.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.WKInterfaceButton&gt;"
+                  moduleName = "SalesforceWatch WatchKit Extension"
+                  urlString = "file:///Users/qwall/Dropbox/git/2015/quintonwall/SalesforceWear-DevPack-For-AppleWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
+                  timestampString = "447288297.207097"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.approveButton.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.WKInterfaceButton&gt;"
+                  moduleName = "SalesforceWatch WatchKit Extension"
+                  urlString = "file:///Users/qwall/Dropbox/git/2015/quintonwall/SalesforceWear-DevPack-For-AppleWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
+                  timestampString = "447288297.207227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.init (SalesforceWatch_WatchKit_Extension.ApprovalsDetailController.Type)() -&gt; Swift.ImplicitlyUnwrappedOptional&lt;SalesforceWatch_WatchKit_Extension.ApprovalsDetailController&gt;"
+                  moduleName = "SalesforceWatch WatchKit Extension"
+                  urlString = "file:///Users/qwall/Dropbox/git/2015/quintonwall/SalesforceWear-DevPack-For-AppleWatch/SalesforceWatch%20WatchKit%20Extension/ApprovalsDetailController.swift"
+                  timestampString = "447288297.207338"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "162">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

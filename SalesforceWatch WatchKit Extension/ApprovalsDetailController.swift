@@ -60,7 +60,7 @@ class ApprovalsDetailController: WKInterfaceController {
                     //self.accountName.setText(results["Account"]?["Name"]? as? String)
                     
                    
-                    let amt = results["Amount"]
+                    let amt = results["Amount"] 
                     if let amt = amt as? NSNumber {
                         println(amt)
                         self.optyAmount.setText("$"+amt.stringValue)
