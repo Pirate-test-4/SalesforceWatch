@@ -15,23 +15,28 @@ class ApprovalsInterfaceController: WKInterfaceController {
     @IBOutlet weak var resultsTable: WKInterfaceTable!
     // MARK: Interface Life Cycle
     
-    override func awakeWithContext(context: AnyObject?) {
-        precondition(context is NSArray, "Expected class of `context` to be NSArray.")
-        
-        let approvals = context as NSArray
-        
-       // listDocument = ListDocument(fileURL: listInfo.URL)
-        
-        // Set the title of the interface controller based on the list's name.
-        //setTitle("Approvals"+String(approvals.count))
-        println("Approvals"+String(approvals.count))
-        loadTableData(approvals)
-        
-        
-        
-        // Fill the interface table with the current list items.
-        //setupInterfaceTable()
+    
+    
+    //if app starts from the glance
+    override func handleUserActivity(userInfo: [NSObject : AnyObject]!) {
+       
+        if let results = userInfo["results"] as? NSArray {
+             loadTableData(results)
+        }
     }
+    
+    //if context comes from a prepareForSeque call
+    override func awakeWithContext(context: AnyObject?) {
+       // precondition(context is NSArray, "Expected class of `context` to be NSArray.")
+        
+        
+        if let approvals = context as? NSArray {
+            println("Approvals"+String(approvals.count))
+            loadTableData(approvals)
+        }
+        
+    }
+ 
     
     override func didDeactivate() {
         //listDocument.closeWithCompletionHandler(nil)

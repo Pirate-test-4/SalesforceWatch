@@ -78,10 +78,11 @@ class RootVC: UIViewController {
     
     
     
-    
+    /*
+     * When we receive a notification from watch, send request for data to Salesforce Platform
+     * and return information back to watch.
+     */
     func handleWatchKitNotification(notification: NSNotification) {
-        
-        println("Got a watch notification")
         
         //do this before any handler methods.
         if let watchInfo = notification.object as? WatchInfo {
@@ -89,21 +90,17 @@ class RootVC: UIViewController {
         }
         
         
-        
         if(notification.name == "approval-count") {
-           // homeLabel.text = "Approval Count Notification"
             self.approvalsHandler.getApprovals()
             
         } else if (notification.name == "approval-details") {
-           // homeLabel.text = "Approval Details Notification"
-            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                      if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
                 if let s = info["id"] {
                    
                     self.approvalsHandler.getTargetObjectDetails(s)
                 }
             }
         } else if (notification.name == "approval-update") {
-                // homeLabel.text = "Approval Details Notification"
             if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
                 if let s = info["id"] {
                     self.approvalsHandler.updateApproval(s, status: "Approved")

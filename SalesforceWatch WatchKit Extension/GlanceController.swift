@@ -25,7 +25,7 @@ class GlanceController: WKInterfaceController {
         // Configure interface objects here.
         counterRing.setImageNamed("glance-")
         
-        
+    
         
     }
     override func willActivate() {
@@ -49,7 +49,29 @@ class GlanceController: WKInterfaceController {
             if let reply = reply as? [String: NSArray] {
                 self.approvalsResult = reply["results"]
                 var resultsCount = String(self.approvalsResult.count)
-                self.titleLabel.setText(resultsCount+" Approvals")
+                
+                var approvedCount = 0
+                var pendingCount = 0
+                var rejectedCount = 0
+                
+                for (index, record) in enumerate(self.approvalsResult) {
+                    
+                    var s: NSDictionary = record as NSDictionary
+                
+                    let str:String = s["Status"] as String
+                    switch str {
+                        case "Approved":
+                            approvedCount++
+                        case "Pending":
+                            pendingCount++
+                        case "Rejected":
+                            pendingCount++
+                    default:
+                        println("Missed a status:"+str)
+                    }
+                }
+                
+                self.titleLabel.setText(String(approvedCount)+"/"+String(pendingCount)+"/"+String(rejectedCount))
                 
                 var cnt = self.approvalsResult.count as Int
                 cnt = cnt * 10  //simple multiple to make the animation visible
@@ -58,6 +80,8 @@ class GlanceController: WKInterfaceController {
                 self.counterRing.startAnimating()
                 //repeat count of 0 = infinite looping
                 self.counterRing.startAnimatingWithImagesInRange(NSMakeRange(0, cnt), duration: 1.0, repeatCount: 1)
+                self.updateUserActivity("com.salesforce", userInfo: ["results": self.approvalsResult], webpageURL: nil)
+               
                 
             }
             else {
@@ -69,5 +93,8 @@ class GlanceController: WKInterfaceController {
         
         
     }
-
+    
+   
+    
 }
+
