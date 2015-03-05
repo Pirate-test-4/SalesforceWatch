@@ -162,7 +162,7 @@ As mentioned above, we are using the standard Mobile SDK functionality of delega
 ##WatchKit App
 Now it is time to look at the actual app running on the watch. Our simple sample app doesn't current use notifications (I'll be adding these soon and rolling them into the larger tutorial [here](http://quintonwall.github.io/enterprise-ios).) We are using standard long-look interfaces. Here is the storyboard for the app:
 
-![watch app storyboard](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/storyboard-glances.png)
+![watch app storyboard](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/readme-images/storyboard-glances.png)
 
 Let's look at our glance controller, *GlanceController*. As soon as the app is about to activate, we fetch the list of approvals and display them in a funky little graphical representation plus some indication of which records are approved, pending, rejected.
 
