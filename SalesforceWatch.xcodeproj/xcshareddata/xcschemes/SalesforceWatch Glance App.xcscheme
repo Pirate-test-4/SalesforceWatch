@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0620"
-   version = "1.8">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -75,7 +75,8 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "4">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.springboard"
@@ -106,15 +107,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E725F9DA1A5C8A4A00D6203C"
-            BuildableName = "SalesforceWatch WatchKit App.app"
-            BlueprintName = "SalesforceWatch WatchKit App"
-            ReferencedContainer = "container:SalesforceWatch.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.springboard"
@@ -127,6 +119,15 @@
             ReferencedContainer = "container:SalesforceWatch.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E725F9DA1A5C8A4A00D6203C"
+            BuildableName = "SalesforceWatch WatchKit App.app"
+            BlueprintName = "SalesforceWatch WatchKit App"
+            ReferencedContainer = "container:SalesforceWatch.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
