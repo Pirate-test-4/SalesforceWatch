@@ -1,7 +1,7 @@
 #Salesforce Wear Developer Pack for  Apple Watch
 The [Salesforce Wear](https://developer.salesforce.com/wear) Developer Pack for [Apple Watch](https://www.apple.com/watch/) provides a sample app that uses [WatchKit](https://developer.apple.com/watchkit/) and the [Salesforce Mobile SDK for iOS](https://github.com/forcedotcom/SalesforceMobileSDK-iOS) to build connected apps. The app, which uses Salesforce approval requests,  demonstrates typical patterns developers will face when building these connected apps and is intended as a starter project to accelerate the creation of more fully featured apps using the benefits of Apple Watch and the Salesforce1 Platform.
 
-![Salesforce Wear Watch App](https://github.com/quintonwall/SalesforceWatch/blob/master/watch-mockup.png)
+![Salesforce Wear Watch App](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/watch-mockup.png)
 
 Before we jump into the code, building apps for the Apple Watch requires a quick introduction to a [few important architectural concepts](http://devstreaming.apple.com/videos/watch/Getting_Started_With_Watchkit/Getting_Started_With_Watchkit_hd.mp4). 
 
@@ -27,19 +27,19 @@ The past year has seen a lot of changes in how app screens are laid out on iOS w
 ##Salesforce Wear App Blueprint
 WatchKit apps and Salesforce Wear all follow a similar app blueprint on how to authenticate and interact with the Salesforce1 platform. No matter what your intended use case is, you can follow this standard blueprint. We will use this blueprint to create a simple tasks-based app to demonstrate how to use Salesforce Wear. 
 
-![Salesforce Wear Blueprint](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/blueprint.png)
+![Salesforce Wear Blueprint](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/readme-images/blueprint.png)
 
 ###Communicating with your iOS App
 As mentioned previously, WatchKit apps are an extension to your iOS App. WatchKit provides the underlying bluetooth communication between watch and phone, but as a developer, it is your responsibility to handle messaging. Generally, there are two approaches: App Groups and Observers. 
 
 App Groups allow the sharing of data between different apps within a single project/bundle (remember an iOS app and Apple Watch app are created in the same overall). Once enabled, App Groups work like a key/value store. In practice, I have found they are a little cumbersome to work with on bigger WatchKit apps. 
 
-![App Bundles](https://github.com/quintonwall/SalesforceWatch/blob/master/readme-images/app-bundles.png)
+![App Bundles](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/readme-images/app-bundles.png)
 
 Observers work similar to selectors and delegates in iOS: you register an observer to handle a specific request, implement *handleWatchKitNotification* in your iOS app, create a response block, and you are good to go. Observers allow a more object-oriented and modern approach to handling communications. It's personal preference, but the developer pack and sample app uses observers. We like them. You should too.
 
 ##Sample App
- This Salesforce Wear developer pack provides a complete implementation of  a basic approvals app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/quintonwall/SalesforceWatch), and watch a video of the finished app [here](http://www.youtube.com/watch?v=cQRvR6PFdhU).
+ This Salesforce Wear developer pack provides a complete implementation of  a basic approvals app that uses the existing tasks functionality within Salesforce. Because the purpose of the tutorial is to demonstrate WatchKit integration, the iOS app will be extremely basic from a User Interface perspective - support for authentication and that is about it.  You can grab the app from [GitHub](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch), and watch a video of the finished app [here](http://www.youtube.com/watch?v=cQRvR6PFdhU).
  
 *Note:* This the code and dev park uses iOS 8.2 and Swift 1.2. Please make sure that you have the appropriate targets set for this. At the time of writing, iOS 8.3 (beta 2) and xCode 6.3 (beta 2) appear to have a bug in the WebView implementation when run via the simulator. The bug manifests itself in an inability to click the login button on the Salesforce authentication screen. 
 
