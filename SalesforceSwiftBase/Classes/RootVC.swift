@@ -65,13 +65,7 @@ class RootVC: UIViewController {
         
        
         
-        //[SFUserAccountManager sharedInstance].currentUser.fullName);
        
-        
-        //tmp test
-        
-        approvalsHandler.getApprovals()
-        //approvalsHandler.updateApproval("04gj00000000pUpAAI", status: "Approved")
         
               
     }
