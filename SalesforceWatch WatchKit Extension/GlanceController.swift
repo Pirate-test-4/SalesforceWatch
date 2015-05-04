@@ -56,9 +56,9 @@ class GlanceController: WKInterfaceController {
                 
                 for (index, record) in enumerate(self.approvalsResult) {
                     
-                    var s: NSDictionary = record as NSDictionary
+                    var s: NSDictionary = record as! NSDictionary
                 
-                    let str:String = s["Status"] as String
+                    let str:String = s["Status"] as! String
                     switch str {
                         case "Approved":
                             approvedCount++

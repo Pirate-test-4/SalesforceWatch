@@ -49,7 +49,7 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     
     
     func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
-        var records = jsonResponse.objectForKey("records") as NSArray
+        var records = jsonResponse.objectForKey("records") as! NSArray
         println("request:GOT APPROVALS: #records: \(records.count)");
         
         //send the block back to le watch
