@@ -35,7 +35,7 @@ class RootVC: UIViewController {
     @IBOutlet weak var btnTester: UIButton!
     
     @IBAction func testerPressed(sender: AnyObject) {
-        self.approvalsHandler.updateApproval("04gB0000000BjscIAC", status: "Reject")
+        //self.approvalsHandler.updateApproval("04gB0000000BjscIAC", status: "Reject")
         //self.approvalsHandler.getApprovals()
     }
     //  #pragma mark - view lifecycle
