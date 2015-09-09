@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pMU-VS-2ga">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SalesforceSans-Regular.ttf">
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+            <string>SalesforceSans-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--ApprovalsHome-->
         <scene sceneID="aou-V4-d1y">
@@ -11,7 +22,7 @@
                 <controller identifier="ApprovalsHome" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SalesforceWatch_WatchKit_App" customModuleProvider="target">
                     <items>
                         <button alignment="center" verticalAlignment="center" title="?" backgroundImage="ring-0degrees" id="Amg-66-8wy">
-                            <fontDescription key="font" type="boldSystem" pointSize="57"/>
+                            <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="150"/>
                             <connections>
                                 <action selector="pendingApprovalsTapped" destination="AgC-eL-Hgc" id="upp-LT-AIj"/>
                                 <segue destination="pMU-VS-2ga" kind="push" identifier="showApprovals" id="A2S-W2-aR6"/>
@@ -36,6 +47,7 @@
                                     <fontDescription key="font" type="system" pointSize="20"/>
                                 </label>
                                 <label alignment="right" text="Approvals" id="Cyr-Tn-EJS">
+                                    <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="16"/>
                                     <variation key="device=watch38mm" minimumScaleFactor="0.60000000000000009"/>
                                 </label>
                             </items>
@@ -68,7 +80,7 @@
                                         <items>
                                             <imageView width="25" height="25" alignment="left" verticalAlignment="center" id="2TR-5h-Xzi"/>
                                             <label alignment="left" verticalAlignment="center" text="comment" textAlignment="left" id="GlT-2O-ed7">
-                                                <fontDescription key="font" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
+                                                <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="14"/>
                                             </label>
                                         </items>
                                         <connections>
@@ -94,7 +106,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="368" y="325"/>
+            <point key="canvasLocation" x="363" y="604"/>
         </scene>
         <!--Approvals Detail Controller-->
         <scene sceneID="x5s-Pk-e04">
@@ -103,20 +115,31 @@
                     <items>
                         <group width="1" alignment="left" id="Mxo-Zy-fmN">
                             <items>
-                                <label alignment="center" text="OptyName" id="ZSg-ss-shH"/>
+                                <label alignment="center" text="OptyName" id="ZSg-ss-shH">
+                                    <color key="textColor" red="0.62769931550000002" green="0.79652881620000004" blue="0.92839163540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="14"/>
+                                </label>
                             </items>
                         </group>
-                        <label alignment="center" text="OptyAmount" id="fvd-Wy-Qf8"/>
+                        <label alignment="center" text="OptyAmount" id="fvd-Wy-Qf8">
+                            <color key="textColor" red="0.62769931550000002" green="0.79652881620000004" blue="0.92839163540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="14"/>
+                        </label>
                         <group width="1" height="56" alignment="center" verticalAlignment="center" id="znK-Xd-luF">
                             <items>
                                 <button width="1" alignment="left" title="Reject" id="sJ2-3N-tGQ">
+                                    <color key="backgroundColor" red="0.70016571969696972" green="0.10229449089289411" blue="0.12313816825308935" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="16"/>
                                     <connections>
-                                        <action selector="rejectTapped" destination="U9H-nh-57k" id="9Li-jc-erc"/>
+                                        <action selector="rejectTapped" destination="U9H-nh-57k" id="3E0-FX-UXg"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
                         <button width="1" alignment="left" title="Approve" id="yZ5-WR-5zo">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.54892676767676774" blue="0.0031403083422378545" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" name="SalesforceSans-Regular" family="Salesforce Sans" pointSize="16"/>
                             <connections>
                                 <action selector="approveTapped" destination="U9H-nh-57k" id="ILu-Ug-v3f"/>
                             </connections>
@@ -130,7 +153,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="570" y="324"/>
+            <point key="canvasLocation" x="603" y="274"/>
         </scene>
     </scenes>
 </document>

@@ -47,6 +47,7 @@
 		E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */; };
 		E725F9DC1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */; };
 		E725F9E91A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E76BBC641BA0DF9500F93FCB /* RejectProcess.apex in Resources */ = {isa = PBXBuildFile; fileRef = E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */; };
 		E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */; };
 		E7EFDD811A684CC80022AB99 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EFDD801A684CC80022AB99 /* Interface.storyboard */; };
 		E7F7F5A31A65C6E4003CFD1C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7F7F5A21A65C6E4003CFD1C /* images.xcassets */; };
@@ -54,6 +55,7 @@
 		E7F7F5AC1A66E566003CFD1C /* ApprovalDetailsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */; };
 		E7F7F5AE1A66EE66003CFD1C /* ApprovalsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */; };
 		E7F7F5B01A6738D2003CFD1C /* SalesforceObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F7F5AF1A6738D2003CFD1C /* SalesforceObjectType.swift */; };
+		E7FAF6211BA0DA140036F403 /* ApproveProcess.apex in Resources */ = {isa = PBXBuildFile; fileRef = E7FAF6201BA0DA140036F403 /* ApproveProcess.apex */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +220,14 @@
 		E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		E70BBE6A1A643BB000D0926F /* WatchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		E71A65DA1A5DD4E800179F5E /* SalesforceWatch WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SalesforceWatch WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		E71AF9471B9A6B5B0025E62F /* SalesforceSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Bold.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Bold.ttf"; sourceTree = "<group>"; };
+		E71AF9481B9A6B5B0025E62F /* SalesforceSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-BoldItalic.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E71AF9491B9A6B5B0025E62F /* SalesforceSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Italic.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Italic.ttf"; sourceTree = "<group>"; };
+		E71AF94A1B9A6B5B0025E62F /* SalesforceSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Light.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Light.ttf"; sourceTree = "<group>"; };
+		E71AF94B1B9A6B5B0025E62F /* SalesforceSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-LightItalic.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		E71AF94C1B9A6B5B0025E62F /* SalesforceSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Regular.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Regular.ttf"; sourceTree = "<group>"; };
+		E71AF94D1B9A6B5B0025E62F /* SalesforceSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Thin.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Thin.ttf"; sourceTree = "<group>"; };
+		E71AF94E1B9A6B5B0025E62F /* SalesforceSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-ThinItalic.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-ThinItalic.ttf"; sourceTree = "<group>"; };
 		E71F94491A65956400FE7769 /* ApprovalsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsHandler.swift; sourceTree = "<group>"; };
 		E725F9A71A5B45A200D6203C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SalesforceWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +236,7 @@
 		E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SalesforceWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E725F9E11A5C8A4A00D6203C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E725F9F11A5C8E7800D6203C /* SalesforceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SalesforceWatch.entitlements; sourceTree = SOURCE_ROOT; };
+		E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RejectProcess.apex; sourceTree = "<group>"; };
 		E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsDetailController.swift; sourceTree = "<group>"; };
 		E7EFDD801A684CC80022AB99 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Interface.storyboard; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E7F7F5A21A65C6E4003CFD1C /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
@@ -233,6 +244,7 @@
 		E7F7F5AB1A66E566003CFD1C /* ApprovalDetailsRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalDetailsRowController.swift; sourceTree = "<group>"; };
 		E7F7F5AD1A66EE66003CFD1C /* ApprovalsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsInterfaceController.swift; sourceTree = "<group>"; };
 		E7F7F5AF1A6738D2003CFD1C /* SalesforceObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalesforceObjectType.swift; sourceTree = "<group>"; };
+		E7FAF6201BA0DA140036F403 /* ApproveProcess.apex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApproveProcess.apex; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +396,8 @@
 				824A9E421724EF9800C9BD79 /* Resources */,
 				824A9DDF1724E16400C9BD79 /* Supporting Files */,
 				E725F9A71A5B45A200D6203C /* Main.storyboard */,
+				E7FAF6201BA0DA140036F403 /* ApproveProcess.apex */,
+				E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */,
 			);
 			name = SalesforceWatch;
 			path = SalesforceSwiftBase;
@@ -415,6 +429,14 @@
 		824A9E421724EF9800C9BD79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E71AF9471B9A6B5B0025E62F /* SalesforceSans-Bold.ttf */,
+				E71AF9481B9A6B5B0025E62F /* SalesforceSans-BoldItalic.ttf */,
+				E71AF9491B9A6B5B0025E62F /* SalesforceSans-Italic.ttf */,
+				E71AF94A1B9A6B5B0025E62F /* SalesforceSans-Light.ttf */,
+				E71AF94B1B9A6B5B0025E62F /* SalesforceSans-LightItalic.ttf */,
+				E71AF94C1B9A6B5B0025E62F /* SalesforceSans-Regular.ttf */,
+				E71AF94D1B9A6B5B0025E62F /* SalesforceSans-Thin.ttf */,
+				E71AF94E1B9A6B5B0025E62F /* SalesforceSans-ThinItalic.ttf */,
 				4F7484BE18DD1324006E7D50 /* Images.xcassets */,
 				824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */,
 				824A9E3E1724EC6300C9BD79 /* Settings.bundle */,
@@ -815,6 +837,7 @@
 					};
 					E725F9DA1A5C8A4A00D6203C = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 4X564CR95Y;
 					};
 				};
 			};
@@ -846,10 +869,12 @@
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */,
 				E725F9A81A5B45A200D6203C /* Main.storyboard in Resources */,
+				E7FAF6211BA0DA140036F403 /* ApproveProcess.apex in Resources */,
 				824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */,
 				4F7484BF18DD1324006E7D50 /* Images.xcassets in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
+				E76BBC641BA0DF9500F93FCB /* RejectProcess.apex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,7 +1031,7 @@
 					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceSecurity/Headers",
 				);
 				INFOPLIST_FILE = "SalesforceSwiftBase/SalesforceWatch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1053,7 +1078,7 @@
 					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceSecurity/Headers",
 				);
 				INFOPLIST_FILE = "SalesforceSwiftBase/SalesforceWatch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1088,6 +1113,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1102,6 +1129,7 @@
 				INFOPLIST_FILE = "SalesforceWatch WatchKit App/Info.plist";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1118,6 +1146,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1130,6 +1160,7 @@
 				INFOPLIST_FILE = "SalesforceWatch WatchKit App/Info.plist";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1145,7 +1176,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "SalesforceWatch WatchKit Extension/SalesforceWatch WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1158,7 +1189,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "SalesforceWatch WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-all_load";
@@ -1178,7 +1209,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "SalesforceWatch WatchKit Extension/SalesforceWatch WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1189,7 +1220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "SalesforceWatch WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "${TARGET_NAME}";

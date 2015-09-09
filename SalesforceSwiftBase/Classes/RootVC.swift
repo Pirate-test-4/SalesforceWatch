@@ -32,7 +32,12 @@ class RootVC: UIViewController {
 
     let approvalsHandler: ApprovalsHandler = ApprovalsHandler()
     
+    @IBOutlet weak var btnTester: UIButton!
     
+    @IBAction func testerPressed(sender: AnyObject) {
+        self.approvalsHandler.updateApproval("04gB0000000BjscIAC", status: "Reject")
+        //self.approvalsHandler.getApprovals()
+    }
     //  #pragma mark - view lifecycle
     
     override func viewDidLoad() {
@@ -59,6 +64,15 @@ class RootVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
             name: "approval-details",
             object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
+            name: "approval-update",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
+            name: "approval-reject",
+            object: nil)
+
         
         
         
@@ -97,9 +111,16 @@ class RootVC: UIViewController {
         } else if (notification.name == "approval-update") {
             if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
                 if let s = info["id"] {
-                    self.approvalsHandler.updateApproval(s, status: "Approved")
+                    self.approvalsHandler.updateApproval(s, status: "Approve")
                 }
                     
+            }
+        } else if (notification.name == "approval-reject") {
+            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
+                if let s = info["id"] {
+                    self.approvalsHandler.updateApproval(s, status: "Reject")
+                }
+                
             }
         }
     

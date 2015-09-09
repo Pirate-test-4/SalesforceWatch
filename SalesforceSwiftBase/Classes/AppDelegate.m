@@ -81,7 +81,7 @@ static NSString * const OAuthRedirectURI        = @"mobilesdk://success";
         [SFUserAccountManager sharedInstance].oauthClientId = RemoteAccessConsumerKey;
         [SFUserAccountManager sharedInstance].oauthCompletionUrl = OAuthRedirectURI;
         [SFUserAccountManager sharedInstance].scopes = [NSSet setWithObjects:@"web", @"api", nil];
-       // [[SFRestAPI sharedInstance] setApiVersion:@"32.0"];
+        [[SFRestAPI sharedInstance] setApiVersion:@"v35.0"];
 
         
         // Auth manager delegate, for receiving logout and login host change events.

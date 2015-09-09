@@ -19,18 +19,29 @@ class ApprovalsDetailController: WKInterfaceController {
     var id: String!
     
     
-    @IBAction func rejectTapped() {
-    }
-    
     @IBAction func approveTapped() {
-        println("Updating record: "+id)
+        println("Approving record: "+id)
+        
         
         let requestBundle = ["request-type" : "approval-update", "id" : id]
         
         WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
             //back
         })
+
+        //self.popController()  //for push
+        self.dismissController()  //for modal
+    }
+    
+    @IBAction func rejectTapped() {
+        println("Rejecting record: "+id)
         
+        let requestBundle = ["request-type" : "approval-reject", "id" : id]
+        
+        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+            //back
+            })
+         self.dismissController()  //for modal
     }
     
     override func awakeWithContext(context: AnyObject?) {

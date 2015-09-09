@@ -5,3 +5,5 @@
 #import <UIKit/UIKit.h>
 #import "SFRestAPI.h"
 #import "SFRestRequest.h"
+#import "SFUserAccountManager.h"
+#import "SFJsonUtils.h"

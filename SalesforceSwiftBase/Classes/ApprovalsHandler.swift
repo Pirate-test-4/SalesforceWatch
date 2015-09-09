@@ -12,6 +12,7 @@
 import Foundation
 
 
+
 class ApprovalsHandler: NSObject, SFRestDelegate {
     
     var watchInfo : WatchInfo?
@@ -20,9 +21,9 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         
         
         var sharedInstance = SFRestAPI.sharedInstance()
-     
-         var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance order by LastModifiedDate")
-        
+       
+        var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status != 'Approved' order by LastModifiedDate")
+       
 
         
        sharedInstance.send(request as SFRestRequest, delegate: self)
@@ -40,23 +41,45 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     //TODO
     func updateApproval(targetobjectid: NSString, status: NSString) {
         var sharedInstance = SFRestAPI.sharedInstance()
-      
-        //first, let's get the workitem id that we need to use to update to processItem
-        var wireq = sharedInstance.requestForQuery("select id from ProcessInstanceWorkItem where processinstanceid = '"+(targetobjectid as String)+"'")
+        var currUserId = SFUserAccountManager.sharedInstance().currentUserId
+        var apiUrl = SFUserAccountManager.sharedInstance().currentUser.apiUrl.absoluteString
+    
+        
+        //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
+       // see ApproveProcess.apex contained in the project
+
+        var request = SFRestRequest()
+        
+        request.method = SFRestMethodPOST
+
+        if(status == "Approve") {
+            request.endpoint = "/services/apexrest/ApproveProcess"
+            request.path = "/services/apexrest/ApproveProcess"
+        } else if (status == "Reject") {
+            request.endpoint = "/services/apexrest/RejectProcess"
+            request.path = "/services/apexrest/RejectProcess"
+        }
+        request.queryParams = ["processId" : targetobjectid]
+        
+        sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
+        
         
     }
     
     
     
     func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
-        var records = jsonResponse.objectForKey("records") as! NSArray
-        println("request:GOT APPROVALS: #records: \(records.count)");
         
-        //send the block back to le watch
-        if let watchInfo = watchInfo {
-            let stuff = ["results" : records]
-            watchInfo.replyBlock(stuff)
-        }
+       // if( jsonResponse != nil) {
+            var records = jsonResponse.objectForKey("records") as! NSArray
+            println("request:GOT APPROVALS: #records: \(records.count)");
+            
+            //send the block back to le watch
+            if let watchInfo = watchInfo {
+                let stuff = ["results" : records]
+                watchInfo.replyBlock(stuff)
+            }
+       // }
        
     }
     
