@@ -158,6 +158,27 @@ As mentioned above, we are using the standard Mobile SDK functionality of delega
     }
 
 ```
+The app also uses custom Apex Rest endpoints to make it easy to work with the Salesforce Approval Process schema. This is a great example of using Salesforce as an MBaaS - you add cloud logic where it makes sense. In order to use the app add ApproveProcess.apex and RejectProcess.apex to your Salesforce org. The code below shows how the ApprovalHandler.swift calls these Restful endpoints.
+
+```swift
+ var request = SFRestRequest()
+        
+        request.method = SFRestMethodPOST
+
+        if(status == "Approve") {
+            request.endpoint = "/services/apexrest/ApproveProcess"
+            request.path = "/services/apexrest/ApproveProcess"
+        } else if (status == "Reject") {
+            request.endpoint = "/services/apexrest/RejectProcess"
+            request.path = "/services/apexrest/RejectProcess"
+        }
+        request.queryParams = ["processId" : targetobjectid]
+        
+        sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
+        
+
+
+```
 
 ##WatchKit App
 Now it is time to look at the actual app running on the watch. Our simple sample app doesn't current use notifications (I'll be adding these soon and rolling them into the larger tutorial [here](http://quintonwall.github.io/enterprise-ios).) We are using standard long-look interfaces. Here is the storyboard for the app:
