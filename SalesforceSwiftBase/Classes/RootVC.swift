@@ -84,7 +84,7 @@ class RootVC: UIViewController {
               
     }
     
-    
+   
     
     /*
      * When we receive a notification from watch, send request for data to Salesforce Platform

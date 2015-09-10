@@ -7,3 +7,4 @@
 #import "SFRestRequest.h"
 #import "SFUserAccountManager.h"
 #import "SFJsonUtils.h"
+#import <SalesforceSDKCore/SFAuthenticationManager.h>

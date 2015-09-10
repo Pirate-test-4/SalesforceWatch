@@ -27,16 +27,31 @@ class ApprovalsInterfaceController: WKInterfaceController {
     
     //if context comes from a prepareForSeque call
     override func awakeWithContext(context: AnyObject?) {
-       // precondition(context is NSArray, "Expected class of `context` to be NSArray.")
         
+        let requestBundle = ["request-type" : "approval-count"]
         
-        if let approvals = context as? NSArray {
-            println("Approvals"+String(approvals.count))
-            loadTableData(approvals)
-        }
-        
+        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+            
+            if let reply = reply as? [String: NSArray] {
+                self.loadTableData(reply["results"]!)
+                
+            }
+        })
     }
- 
+    
+    /*
+    override func willActivate() {
+        let requestBundle = ["request-type" : "approval-count"]
+        
+        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+            
+            if let reply = reply as? [String: NSArray] {
+                self.loadTableData(reply["results"]!)
+                
+            }
+        })
+    }
+ */
     
     override func didDeactivate() {
         //listDocument.closeWithCompletionHandler(nil)

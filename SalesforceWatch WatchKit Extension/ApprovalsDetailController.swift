@@ -30,7 +30,8 @@ class ApprovalsDetailController: WKInterfaceController {
         })
 
         //self.popController()  //for push
-        self.dismissController()  //for modal
+       self.dismissController()  //for modal
+        //self.popToRootController()
     }
     
     @IBAction func rejectTapped() {
