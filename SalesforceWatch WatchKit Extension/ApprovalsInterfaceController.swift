@@ -61,16 +61,16 @@ class ApprovalsInterfaceController: WKInterfaceController {
         
         //withRowType needs to be the identifier you give the table in your storyboard
         resultsTable.setNumberOfRows(results.count, withRowType: "ApprovalRows")
-        println(resultsTable.numberOfRows)
+        print(resultsTable.numberOfRows)
         
-        for (index, record) in enumerate(results) {
+        for (index, record) in results.enumerate() {
            let row = resultsTable.rowControllerAtIndex(index) as! ApprovalDetailsRowController
        
-            var s: NSDictionary = record as! NSDictionary
+            let s: NSDictionary = record as! NSDictionary
             row.image.setImageNamed(s["Status"] as? String)
             row.recordid = s["Id"] as? String
             row.opportunityId = s["TargetObjectId"] as? String
-            var status = s["Status"] as? String
+            let status = s["Status"] as? String
             row.detailLabel.setText(status! + " "+(SalesforceObjectType.getType(row.opportunityId) as String))
             //row.detailLabel.setText(s["Status"] as? String)
             

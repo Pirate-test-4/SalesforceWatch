@@ -20,7 +20,7 @@ class ApprovalsDetailController: WKInterfaceController {
     
     
     @IBAction func approveTapped() {
-        println("Approving record: "+id)
+        print("Approving record: "+id)
         
         
         let requestBundle = ["request-type" : "approval-update", "id" : id]
@@ -35,7 +35,7 @@ class ApprovalsDetailController: WKInterfaceController {
     }
     
     @IBAction func rejectTapped() {
-        println("Rejecting record: "+id)
+        print("Rejecting record: "+id)
         
         let requestBundle = ["request-type" : "approval-reject", "id" : id]
         
@@ -50,7 +50,7 @@ class ApprovalsDetailController: WKInterfaceController {
         
         //let (recordid, targetobjectid) = context as (String, String)
         let record = context as! Dictionary<String, String>
-        println(record["recordid"])
+        print(record["recordid"])
         self.id = record["recordid"]
         let id: NSString = record["targetobjectid"]!
         //println(recordid)
@@ -74,7 +74,7 @@ class ApprovalsDetailController: WKInterfaceController {
                    
                     let amt: AnyObject? = results["Amount"] 
                     if let amt = amt as? NSNumber {
-                        println(amt)
+                        print(amt)
                         self.optyAmount.setText("$"+amt.stringValue)
                     }
                  //self.optyAmount.setText(amt)
@@ -89,7 +89,7 @@ class ApprovalsDetailController: WKInterfaceController {
             }
             else {
                 // self.userNameLabel.setText("No Response")
-                println("no response")
+                print("no response")
                 
             }
             }

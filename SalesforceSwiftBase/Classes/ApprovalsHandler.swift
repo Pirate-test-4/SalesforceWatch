@@ -20,9 +20,9 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     func getApprovals() {
         
         
-        var sharedInstance = SFRestAPI.sharedInstance()
+        let sharedInstance = SFRestAPI.sharedInstance()
        
-        var request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
+        let request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
        
 
         
@@ -31,8 +31,8 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     
     func getTargetObjectDetails(targetobjectid: NSString) {
         
-        var sharedInstance = SFRestAPI.sharedInstance()
-        var request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+(targetobjectid as String)+"'")
+        let sharedInstance = SFRestAPI.sharedInstance()
+        let request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+(targetobjectid as String)+"'")
         
         sharedInstance.send(request as SFRestRequest, delegate: self)
         
@@ -40,7 +40,7 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     
     //TODO
     func updateApproval(targetobjectid: NSString, status: NSString) {
-        var sharedInstance = SFRestAPI.sharedInstance()
+        let sharedInstance = SFRestAPI.sharedInstance()
         var currUserId = SFUserAccountManager.sharedInstance().currentUserId
         var apiUrl = SFUserAccountManager.sharedInstance().currentUser.apiUrl.absoluteString
     
@@ -48,7 +48,7 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
        // see ApproveProcess.apex contained in the project
 
-        var request = SFRestRequest()
+        let request = SFRestRequest()
         
         request.method = SFRestMethodPOST
 
@@ -71,8 +71,8 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
         
        // if( jsonResponse != nil) {
-            var records = jsonResponse.objectForKey("records") as! NSArray
-            println("request:GOT APPROVALS: #records: \(records.count)");
+            let records = jsonResponse.objectForKey("records") as! NSArray
+            print("request:GOT APPROVALS: #records: \(records.count)");
             
             //send the block back to le watch
             if let watchInfo = watchInfo {
@@ -84,16 +84,16 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
     }
     
     func request(request: SFRestRequest?, didFailLoadWithError error:NSError) {
-        println("In Error: \(error)")
+        print("In Error: \(error)")
     }
     
     func requestDidCancelLoad(request: SFRestRequest) {
-        println("In requestDidCancelLoad \(request)")
+        print("In requestDidCancelLoad \(request)")
     }
     
     
     func requestDidTimeout(request: SFRestRequest) {
-        println("In requestDidTimeout \(request)")
+        print("In requestDidTimeout \(request)")
     }
     
 

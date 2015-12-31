@@ -20,7 +20,7 @@ class GlanceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        println("awake with context");
+        print("awake with context");
         
         // Configure interface objects here.
         counterRing.setImageNamed("glance-")
@@ -52,11 +52,11 @@ class GlanceController: WKInterfaceController {
                 
                 var approvedCount = 0
                 var pendingCount = 0
-                var rejectedCount = 0
+                let rejectedCount = 0
                 
-                for (index, record) in enumerate(self.approvalsResult) {
+                for (index, record) in self.approvalsResult.enumerate() {
                     
-                    var s: NSDictionary = record as! NSDictionary
+                    let s: NSDictionary = record as! NSDictionary
                 
                     let str:String = s["Status"] as! String
                     switch str {
@@ -67,7 +67,7 @@ class GlanceController: WKInterfaceController {
                         case "Rejected":
                             pendingCount++
                     default:
-                        println("Missed a status:"+str)
+                        print("Missed a status:"+str)
                     }
                 }
                 
@@ -86,7 +86,7 @@ class GlanceController: WKInterfaceController {
             }
             else {
                 // self.userNameLabel.setText("No Response")
-                println("no response")
+                print("no response")
                 
             }
         })

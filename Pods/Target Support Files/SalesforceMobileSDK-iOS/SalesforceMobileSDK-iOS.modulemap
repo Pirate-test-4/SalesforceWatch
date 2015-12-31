@@ -1,0 +1,6 @@
+framework module SalesforceMobileSDK_iOS {
+  umbrella header "SalesforceMobileSDK-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

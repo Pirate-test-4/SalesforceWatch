@@ -1,0 +1,38 @@
+PODS:
+  - CocoaLumberjack (2.2.0):
+    - CocoaLumberjack/Default (= 2.2.0)
+    - CocoaLumberjack/Extensions (= 2.2.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
+  - SalesforceMobileSDK-iOS/SalesforceNetwork (4.0.0):
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore
+  - SalesforceMobileSDK-iOS/SalesforceRestAPI (4.0.0):
+    - SalesforceMobileSDK-iOS/SalesforceNetwork
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore
+  - SalesforceMobileSDK-iOS/SalesforceSDKCore (4.0.0):
+    - CocoaLumberjack (~> 2.2.0)
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/arc (= 4.0.0)
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/base (= 4.0.0)
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/no-arc (= 4.0.0)
+  - SalesforceMobileSDK-iOS/SalesforceSDKCore/arc (4.0.0):
+    - CocoaLumberjack (~> 2.2.0)
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/base
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/no-arc
+  - SalesforceMobileSDK-iOS/SalesforceSDKCore/base (4.0.0):
+    - CocoaLumberjack (~> 2.2.0)
+  - SalesforceMobileSDK-iOS/SalesforceSDKCore/no-arc (4.0.0):
+    - CocoaLumberjack (~> 2.2.0)
+    - SalesforceMobileSDK-iOS/SalesforceSDKCore/base
+
+DEPENDENCIES:
+  - SalesforceMobileSDK-iOS/SalesforceNetwork
+  - SalesforceMobileSDK-iOS/SalesforceRestAPI
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  SalesforceMobileSDK-iOS: 941b8ffe1763ae075bac61fa5c956ca27679e3c8
+
+COCOAPODS: 0.39.0

@@ -22,7 +22,7 @@ class InterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-         println("awake with context");
+         print("awake with context");
         
         // Configure interface objects here.
         
@@ -50,7 +50,7 @@ class InterfaceController: WKInterfaceController {
            
             if let reply = reply as? [String: NSArray] {
                 self.approvalsResult = reply["results"]
-                var resultsCount = String(self.approvalsResult.count)
+                let resultsCount = String(self.approvalsResult.count)
                 
                 //UIKit on Apple Watch is currently a little limiting. This is an example of using a button to creatively display a visual indicator
                 //check out the glance scene and GlanceController for the 'official' way of handling animations in WatchKit.
@@ -62,7 +62,7 @@ class InterfaceController: WKInterfaceController {
         }
             else {
                // self.userNameLabel.setText("No Response")
-               println("no response")
+               print("no response")
                
             }
         })
@@ -102,7 +102,7 @@ class InterfaceController: WKInterfaceController {
 
     override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
         if segueIdentifier == "showApprovals" {
-            println("seque pressed!")
+            print("seque pressed!")
             return self.approvalsResult
         } else {
             return nil
