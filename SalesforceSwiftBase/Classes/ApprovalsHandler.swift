@@ -10,12 +10,55 @@
 //
 
 import Foundation
+import WatchConnectivity
 
 
 
-class ApprovalsHandler: NSObject, SFRestDelegate {
+class ApprovalsHandler: NSObject, WCSessionDelegate {
     
-    var watchInfo : WatchInfo?
+    var session: WCSession!
+    
+    func register() {
+        
+        print("Salesforce Wear Dev Pack for Apple Watch registering for WatchKit sessions")
+        
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self;
+            session.activateSession()
+        }
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        print("heard a request from the watch")
+        
+        //make sure we are logged in
+        if( !SFAuthenticationManager.sharedManager().haveValidSession) {
+            print("not logged in")
+            replyHandler(["error": "not logged in"])
+        } else {
+            print("prep request")
+            let reqType = message["request-type"] as! String
+            
+            if(notification.name == "approval-count") {
+                self.getApprovals()
+                
+            } else if (notification.name == "approval-details") {
+                let objid = message["param1"] as! String
+                self.getTargetObjectDetails(objid)
+            } else if (notification.name == "approval-update") {
+                let objid = message["param1"] as! String
+               self.updateApproval(objid, status: "Approve")
+            } else if (notification.name == "approval-reject") {
+                let objid = message["param1"] as! String
+                self.updateApproval(objid, status: "Reject")
+            }  else {
+                replyHandler(["error": "no such request-type: "+reqType])
+            }
+
+        }
+    }
+    
     
     func getApprovals() {
         
@@ -25,8 +68,13 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         let request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
        
 
-        
-       sharedInstance.send(request as SFRestRequest, delegate: self)
+        sharedInstance.performSOQLQuery(query, failBlock: { error in
+            replyHandler(["error": error])
+            }) { response in  //success
+                print("sending successful response")
+                replyHandler(["success": response])
+        }
+       
    }
     
     func getTargetObjectDetails(targetobjectid: NSString) {
@@ -34,11 +82,15 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         let sharedInstance = SFRestAPI.sharedInstance()
         let request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+(targetobjectid as String)+"'")
         
-        sharedInstance.send(request as SFRestRequest, delegate: self)
+         sharedInstance.performSOQLQuery(query, failBlock: { error in
+            replyHandler(["error": error])
+            }) { response in  //success
+                print("sending successful response")
+                replyHandler(["success": response])
+        }
         
     }
     
-    //TODO
     func updateApproval(targetobjectid: NSString, status: NSString) {
         let sharedInstance = SFRestAPI.sharedInstance()
         var currUserId = SFUserAccountManager.sharedInstance().currentUserId
@@ -65,37 +117,5 @@ class ApprovalsHandler: NSObject, SFRestDelegate {
         
         
     }
-    
-    
-    
-    func request(request: SFRestRequest?, didLoadResponse jsonResponse: AnyObject) {
-        
-       // if( jsonResponse != nil) {
-            let records = jsonResponse.objectForKey("records") as! NSArray
-            print("request:GOT APPROVALS: #records: \(records.count)");
-            
-            //send the block back to le watch
-            if let watchInfo = watchInfo {
-                let stuff = ["results" : records]
-                watchInfo.replyBlock(stuff)
-            }
-       // }
-       
-    }
-    
-    func request(request: SFRestRequest?, didFailLoadWithError error:NSError) {
-        print("In Error: \(error)")
-    }
-    
-    func requestDidCancelLoad(request: SFRestRequest) {
-        print("In requestDidCancelLoad \(request)")
-    }
-    
-    
-    func requestDidTimeout(request: SFRestRequest) {
-        print("In requestDidTimeout \(request)")
-    }
-    
-
     
 }
