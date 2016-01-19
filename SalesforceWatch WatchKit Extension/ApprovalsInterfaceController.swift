@@ -8,14 +8,17 @@
 
 import Foundation
 import WatchKit
+import WatchConnectivity  //new for watchOS2
 
-class ApprovalsInterfaceController: WKInterfaceController {
+class ApprovalsInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     
     @IBOutlet weak var resultsTable: WKInterfaceTable!
     // MARK: Interface Life Cycle
     
     
+    //used to register the watch and paired phone
+    var session : WCSession!
     
     //if app starts from the glance
     override func handleUserActivity(userInfo: [NSObject : AnyObject]!) {
@@ -28,31 +31,25 @@ class ApprovalsInterfaceController: WKInterfaceController {
     //if context comes from a prepareForSeque call
     override func awakeWithContext(context: AnyObject?) {
         
-        let requestBundle = ["request-type" : "approval-count"]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            
-            if let reply = reply as? [String: NSArray] {
-                self.loadTableData(reply["results"]!)
-                
-            }
-        })
-    }
-    
-    /*
-    override func willActivate() {
-        let requestBundle = ["request-type" : "approval-count"]
+        let applicationData = ["request-type":"approval-count"]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+        
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(applicationData, replyHandler: { reply in
+                //handle iphone response here
+                if(reply["success"] != nil) {
+                    let a:AnyObject = reply["results"] as! NSDictionary
+                     self.loadTableData(a as! NSArray)
+                }
+            },
+            errorHandler: {(error ) -> Void in
+                    // catch any errors here
+            })
+        }
             
-            if let reply = reply as? [String: NSArray] {
-                self.loadTableData(reply["results"]!)
-                
-            }
-        })
     }
- */
-    
+
     override func didDeactivate() {
         //listDocument.closeWithCompletionHandler(nil)
     }

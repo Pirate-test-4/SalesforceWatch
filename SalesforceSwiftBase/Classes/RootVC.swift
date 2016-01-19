@@ -27,108 +27,42 @@ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 
 import UIKit
 
-class RootVC: UIViewController {
+class RootVC: UIViewController, SFAuthenticationManagerDelegate {
     
 
-    let approvalsHandler: ApprovalsHandler = ApprovalsHandler()
+    @IBOutlet weak var connectButton: UIButton!
     
-    @IBOutlet weak var btnTester: UIButton!
     
-    @IBAction func testerPressed(sender: AnyObject) {
-        //self.approvalsHandler.updateApproval("04gB0000000BjscIAC", status: "Reject")
-        //self.approvalsHandler.getApprovals()
-    }
     //  #pragma mark - view lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = " Mobile SDK & Apple Watch Sample App"
+        self.title = " Mobile SDK & WatchOS2 Sample App"
         
-        
-        //let userDefaults = NSUserDefaults(suiteName: "group.com.salesforce.SalesforceWatch")
-       // let data = "jack".dataUsingEncoding(NSUTF8StringEncoding)
-       // userDefaults?.setValue(data, forKeyPath: "user.name")
-       // userDefaults?.synchronize()
-       // println("syncing app group")
-        
-        //add observer to listen for requests from WatchKit
-        //TODO: move these to separate handlers.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
-            name: "WatchKitSaysHello",
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
-            name: "approval-count",
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
-            name: "approval-details",
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
-            name: "approval-update",
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleWatchKitNotification:"),
-            name: "approval-reject",
-            object: nil)
-
-        
-        
-        
-        
-       
-        
-       
-        
-              
+        connectButton.backgroundColor = UIColor.clearColor()
+        //connectButton.layer.cornerRadius = 5
+        // connectButton.layer.borderWidth = 1
+        connectButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
-   
+    @IBAction func connectTapped(sender: AnyObject) {
+        
+         SalesforceSDKManager.sharedManager().launch()
+    }
     
-    /*
-     * When we receive a notification from watch, send request for data to Salesforce Platform
-     * and return information back to watch.
-     */
-    func handleWatchKitNotification(notification: NSNotification) {
+    func authManagerDidFinish(manager: SFAuthenticationManager!, info: SFOAuthInfo!) {
         
-        //do this before any handler methods.
-        if let watchInfo = notification.object as? WatchInfo {
-            self.approvalsHandler.watchInfo = watchInfo
-        }
+        //need to perform this check at the end of the authmanager lifecycle
+        //because SFRootViewManager removes the current view after didAUthenticate gets called :(
         
-        
-        if(notification.name == "approval-count") {
-            self.approvalsHandler.getApprovals()
+        if SFAuthenticationManager.sharedManager().haveValidSession {
             
-        } else if (notification.name == "approval-details") {
-                      if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
-                if let s = info["id"] {
-                   
-                    self.approvalsHandler.getTargetObjectDetails(s)
-                }
-            }
-        } else if (notification.name == "approval-update") {
-            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
-                if let s = info["id"] {
-                    self.approvalsHandler.updateApproval(s, status: "Approve")
-                }
-                    
-            }
-        } else if (notification.name == "approval-reject") {
-            if let info = self.approvalsHandler.watchInfo?.userInfo as? Dictionary<String,String> {
-                if let s = info["id"] {
-                    self.approvalsHandler.updateApproval(s, status: "Reject")
-                }
-                
-            }
+            self.performSegueWithIdentifier("loggedin", sender: nil)
         }
-    
-    //end
     }
-    
-   
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+ 
 }
+
+
+
+

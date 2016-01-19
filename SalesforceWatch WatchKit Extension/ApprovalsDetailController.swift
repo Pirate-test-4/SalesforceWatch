@@ -8,8 +8,9 @@
 
 import Foundation
 import WatchKit
+import WatchConnectivity
 
-class ApprovalsDetailController: WKInterfaceController {
+class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet weak var optyName: WKInterfaceLabel!
     @IBOutlet weak var accountName: WKInterfaceLabel!
@@ -18,20 +19,24 @@ class ApprovalsDetailController: WKInterfaceController {
     @IBOutlet weak var rejectButton: WKInterfaceButton!
     var id: String!
     
+    //used to register the watch and paired phone
+    var session : WCSession!
+
+
     
     @IBAction func approveTapped() {
         print("Approving record: "+id)
         
-        
         let requestBundle = ["request-type" : "approval-update", "id" : id]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            //back
-        })
-
-        //self.popController()  //for push
-       self.dismissController()  //for modal
-        //self.popToRootController()
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                self.dismissController()
+            },
+            errorHandler: {(error ) -> Void in
+                    // catch any errors here
+            })
+        }
     }
     
     @IBAction func rejectTapped() {
@@ -39,10 +44,15 @@ class ApprovalsDetailController: WKInterfaceController {
         
         let requestBundle = ["request-type" : "approval-reject", "id" : id]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            //back
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                self.dismissController()
+                },
+                errorHandler: {(error ) -> Void in
+                    // catch any errors here
             })
-         self.dismissController()  //for modal
+        }
+    
     }
     
     override func awakeWithContext(context: AnyObject?) {
@@ -56,46 +66,27 @@ class ApprovalsDetailController: WKInterfaceController {
         //println(recordid)
         
         let requestBundle = ["request-type" : "approval-details", "id" : id]
-        //let requestBundle = ["request-type" : "approval-details"]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            
-            if let reply = reply as? [String: NSArray] {
-                 let results = reply["results"]
-                if let results = results as? [NSDictionary] {
-                    let results = results[0]
-                
-                    self.optyName.setText(results["Name"] as? String)
-                    
-                    
-                    //get the nested account name
-                    //self.accountName.setText(results["Account"]?["Name"]? as? String)
-                    
-                   
-                    let amt: AnyObject? = results["Amount"] 
-                    if let amt = amt as? NSNumber {
-                        print(amt)
-                        self.optyAmount.setText("$"+amt.stringValue)
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                if(reply["success"] != nil) {
+                   let a:AnyObject = reply["results"] as! NSDictionary
+                    if let results = a as? [NSDictionary] {
+                        let results = results[0]
+                        self.optyName.setText(results["Name"] as? String)
+                        
+                        let amt: AnyObject? = results["Amount"]
+                        if let amt = amt as? NSNumber {
+                            print(amt)
+                            self.optyAmount.setText("$"+amt.stringValue)
+                        }
                     }
-                 //self.optyAmount.setText(amt)
-                
-                
-                
-                //   self.userNameLabel.setText("Hello "+reply["username"]!)
-                
-                //for (key, val) in results {
-               //    println("parent app reponse is \(key): \(val)")
-              //  }
-            }
-            else {
-                // self.userNameLabel.setText("No Response")
-                print("no response")
-                
-            }
-            }
-        })
-
-        
-        
+                } else {
+                    print("no response")
+                }},
+                errorHandler: {(error ) -> Void in
+                    // catch any errors here
+            })
+        }
     }
 }

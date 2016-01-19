@@ -1,16 +1,10 @@
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
 
-#import <UIKit/UIKit.h>
-/*
-#import "SFRestAPI.h"
-#import "SFRestRequest.h"
-#import "SFUserAccountManager.h"
-#import "SFJsonUtils.h"
-#import <SalesforceSDKCore/SFAuthenticationManager.h>
 
- */
+#ifndef SalesforceSwiftBase_Bridging_Header_h
+#define SalesforceSwiftBase_Bridging_Header_h
+
+#endif
+
 #import <SalesforceSDKCore/SFLogger.h>
 #import <SalesforceSDKCore/SFUserAccountManager.h>
 #import <SalesforceSDKCore/SalesforceSDKManager.h>

@@ -11,7 +11,8 @@
 
 import Foundation
 import WatchConnectivity
-
+import SalesforceSDKCore
+import SalesforceRestAPI
 
 
 class ApprovalsHandler: NSObject, WCSessionDelegate {
@@ -21,6 +22,8 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
     func register() {
         
         print("Salesforce Wear Dev Pack for Apple Watch registering for WatchKit sessions")
+        
+        
         
         if (WCSession.isSupported()) {
             session = WCSession.defaultSession()
@@ -38,84 +41,63 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
             replyHandler(["error": "not logged in"])
         } else {
             print("prep request")
+            let sharedInstance = SFRestAPI.sharedInstance()
+
             let reqType = message["request-type"] as! String
             
-            if(notification.name == "approval-count") {
-                self.getApprovals()
+            if(reqType == "approval-count") {
+                let query = String("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
                 
-            } else if (notification.name == "approval-details") {
+                sharedInstance.performSOQLQuery(query, failBlock: { error in
+                    replyHandler(["error": error])
+                    }) { response in  //success
+                        print("sending successful response")
+                        replyHandler(["success": response])
+                }
+
+                
+            } else if (reqType == "approval-details") {
                 let objid = message["param1"] as! String
-                self.getTargetObjectDetails(objid)
-            } else if (notification.name == "approval-update") {
+                let query = String("select id, name, amount, Account.name from Opportunity where id = '"+(objid as String)+"'")
+                
+                sharedInstance.performSOQLQuery(query, failBlock: { error in
+                    replyHandler(["error": error])
+                    }) { response in  //success
+                        print("sending successful response")
+                        replyHandler(["success": response])
+                }
+            } else if (reqType == "approval-update") {
                 let objid = message["param1"] as! String
-               self.updateApproval(objid, status: "Approve")
-            } else if (notification.name == "approval-reject") {
+                //let currUserId = SFUserAccountManager.sharedInstance().currentUserIdentity.userId
+                //let apiUrl = SFUserAccountManager.sharedInstance().currentUser.apiUrl.absoluteString
+                
+                
+                //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
+                // see ApproveProcess.apex contained in the project
+                let request = SFRestRequest()
+                
+                request.method = SFRestMethodPOST
+                request.endpoint = "/services/apexrest/ApproveProcess"
+                request.path = "/services/apexrest/ApproveProcess"
+                request.queryParams = ["processId" : objid]
+                sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
+                
+                
+            } else if (reqType == "approval-reject") {
                 let objid = message["param1"] as! String
-                self.updateApproval(objid, status: "Reject")
+                let request = SFRestRequest()
+                
+                request.method = SFRestMethodPOST
+                request.endpoint = "/services/apexrest/RejectProcess"
+                request.path = "/services/apexrest/RejectProcess"
+                request.queryParams = ["processId" : objid]
+                sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
+                
+                
             }  else {
                 replyHandler(["error": "no such request-type: "+reqType])
             }
 
         }
     }
-    
-    
-    func getApprovals() {
-        
-        
-        let sharedInstance = SFRestAPI.sharedInstance()
-       
-        let request = sharedInstance.requestForQuery("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
-       
-
-        sharedInstance.performSOQLQuery(query, failBlock: { error in
-            replyHandler(["error": error])
-            }) { response in  //success
-                print("sending successful response")
-                replyHandler(["success": response])
-        }
-       
-   }
-    
-    func getTargetObjectDetails(targetobjectid: NSString) {
-        
-        let sharedInstance = SFRestAPI.sharedInstance()
-        let request = sharedInstance.requestForQuery("select id, name, amount, Account.name from Opportunity where id = '"+(targetobjectid as String)+"'")
-        
-         sharedInstance.performSOQLQuery(query, failBlock: { error in
-            replyHandler(["error": error])
-            }) { response in  //success
-                print("sending successful response")
-                replyHandler(["success": response])
-        }
-        
-    }
-    
-    func updateApproval(targetobjectid: NSString, status: NSString) {
-        let sharedInstance = SFRestAPI.sharedInstance()
-        var currUserId = SFUserAccountManager.sharedInstance().currentUserId
-        var apiUrl = SFUserAccountManager.sharedInstance().currentUser.apiUrl.absoluteString
-    
-        
-        //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
-       // see ApproveProcess.apex contained in the project
-
-        let request = SFRestRequest()
-        
-        request.method = SFRestMethodPOST
-
-        if(status == "Approve") {
-            request.endpoint = "/services/apexrest/ApproveProcess"
-            request.path = "/services/apexrest/ApproveProcess"
-        } else if (status == "Reject") {
-            request.endpoint = "/services/apexrest/RejectProcess"
-            request.path = "/services/apexrest/RejectProcess"
-        }
-        request.queryParams = ["processId" : targetobjectid]
-        
-        sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
-        
-        
-    }
-    
 }

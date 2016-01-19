@@ -16,10 +16,7 @@ import WatchKit
 let RemoteAccessConsumerKey = "3MVG9fMtCkV6eLhdjZ8TO0bd8hGzu5J5yQgUxxSuCecbgoXyi.K29XllYaR_X0S5uGpH_kLhPbR2bMOys1U2D";
 let OAuthRedirectURI        = "mobilesdk://success";
 let scopes = ["api"];
-let watchHelper: WatchHandler = WatchHandler()
-
-
-
+let approvalsHelper: ApprovalsHandler = ApprovalsHandler()
 
 
 @UIApplicationMain
@@ -95,8 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 self.log(SFLogLevel.Error, msg:"Unknown error during SDK launch.")
             }
-            //  self.initializeAppViewState()
-            // SalesforceSDKManager.sharedManager().launch()
+  
         }
         SalesforceSDKManager.sharedManager().postLogoutAction = {
             [unowned self] in
@@ -107,8 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.handleUserSwitch(fromUser, toUser: toUser)
         }
         
-        //optyHelper = OpportunityHelper()
-        optyHelper.register()
+        
+        approvalsHelper.register()
     }
     
     

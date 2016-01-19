@@ -8,33 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2EDF3CAF1951C3FB00841D1C /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF3CAE1951C3FB00841D1C /* RootVC.swift */; };
-		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F7484BF18DD1324006E7D50 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7484BE18DD1324006E7D50 /* Images.xcassets */; };
-		7DCF2C1B9A83555582FF5A42 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A277B472B8CF03E55A3471 /* Pods.framework */; };
-		824A9DD91724E16400C9BD79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DD81724E16400C9BD79 /* UIKit.framework */; };
-		824A9DDB1724E16400C9BD79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DDA1724E16400C9BD79 /* Foundation.framework */; };
-		824A9DDD1724E16400C9BD79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DDC1724E16400C9BD79 /* CoreGraphics.framework */; };
 		824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824A9DE11724E16400C9BD79 /* InfoPlist.strings */; };
-		824A9DE51724E16400C9BD79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9DE41724E16400C9BD79 /* main.m */; };
 		824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3E1724EC6300C9BD79 /* Settings.bundle */; };
 		824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */; };
-		824A9FE81725098F00C9BD79 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FE71725098F00C9BD79 /* libxml2.dylib */; };
-		824A9FEA1725099600C9BD79 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FE91725099600C9BD79 /* libz.dylib */; };
-		824A9FEC17250ADA00C9BD79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FEB17250ADA00C9BD79 /* CFNetwork.framework */; };
-		824A9FEE17250AE500C9BD79 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FED17250AE500C9BD79 /* CoreData.framework */; };
-		824A9FF017250B7D00C9BD79 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FEF17250B7C00C9BD79 /* MessageUI.framework */; };
-		824A9FF217250B8300C9BD79 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FF117250B8300C9BD79 /* MobileCoreServices.framework */; };
-		824A9FF417250BF300C9BD79 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FF317250BF300C9BD79 /* QuartzCore.framework */; };
-		824A9FF617250BFA00C9BD79 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FF517250BFA00C9BD79 /* Security.framework */; };
-		824A9FF817250C0100C9BD79 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9FF717250C0100C9BD79 /* SystemConfiguration.framework */; };
+		CC9D866F435E46868FA3CB90 /* Pods_SalesforceWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE99619DE5A6E8326546388 /* Pods_SalesforceWatch.framework */; };
 		E70B0DEB1AA7C2F7006E8CDE /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */; };
-		E70BBE6B1A643BB000D0926F /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BBE6A1A643BB000D0926F /* WatchInfo.swift */; };
 		E71F944A1A65956400FE7769 /* ApprovalsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71F94491A65956400FE7769 /* ApprovalsHandler.swift */; };
 		E725F9A81A5B45A200D6203C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E725F9A71A5B45A200D6203C /* Main.storyboard */; };
 		E725F9D61A5C8A4A00D6203C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E725F9D51A5C8A4A00D6203C /* InterfaceController.swift */; };
 		E72678381C35BE970022C2E1 /* SalesforceWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E725F9D11A5C8A4A00D6203C /* SalesforceWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E726783B1C35BE970022C2E1 /* SalesforceWatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */; };
-		E726783F1C35BEDE0022C2E1 /* WatchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726783E1C35BEDE0022C2E1 /* WatchHandler.swift */; };
 		E72678411C35C0300022C2E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72678401C35C0300022C2E1 /* AppDelegate.swift */; };
 		E76BBC641BA0DF9500F93FCB /* RejectProcess.apex in Resources */ = {isa = PBXBuildFile; fileRef = E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */; };
 		E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */; };
@@ -93,6 +77,7 @@
 		2EDF3CAD1951C3FA00841D1C /* SalesforceSwiftBase-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SalesforceSwiftBase-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EDF3CAE1951C3FB00841D1C /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		37637E246A39FEDEFE175DE6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4A573416AF92466CCDB37E0A /* Pods-SalesforceWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalesforceWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SalesforceWatch/Pods-SalesforceWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		4F3F413417E7CA5C008B3283 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F7484BE18DD1324006E7D50 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58A277B472B8CF03E55A3471 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +87,6 @@
 		824A9DDC1724E16400C9BD79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		824A9DE01724E16400C9BD79 /* SalesforceWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SalesforceWatch-Info.plist"; sourceTree = "<group>"; };
 		824A9DE21724E16400C9BD79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		824A9DE41724E16400C9BD79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		824A9DE61724E16400C9BD79 /* SalesforceWatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SalesforceWatch-Prefix.pch"; sourceTree = "<group>"; };
 		824A9E3E1724EC6300C9BD79 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
@@ -116,8 +100,9 @@
 		824A9FF517250BFA00C9BD79 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		824A9FF717250C0100C9BD79 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		95BFEB9ED760F1F0CFB50BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B0BF81B6F58B453ED3E3DBEC /* Pods-SalesforceWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalesforceWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-SalesforceWatch/Pods-SalesforceWatch.release.xcconfig"; sourceTree = "<group>"; };
+		BBE99619DE5A6E8326546388 /* Pods_SalesforceWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SalesforceWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70B0DEA1AA7C2F7006E8CDE /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		E70BBE6A1A643BB000D0926F /* WatchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		E71A65DA1A5DD4E800179F5E /* SalesforceWatch WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SalesforceWatch WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E71AF9471B9A6B5B0025E62F /* SalesforceSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-Bold.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-Bold.ttf"; sourceTree = "<group>"; };
 		E71AF9481B9A6B5B0025E62F /* SalesforceSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SalesforceSans-BoldItalic.ttf"; path = "../../../../Technical Product Management/fonts/SalesforceSans/SalesforceSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -135,9 +120,18 @@
 		E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SalesforceWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E725F9E11A5C8A4A00D6203C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E725F9F11A5C8E7800D6203C /* SalesforceWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SalesforceWatch.entitlements; sourceTree = SOURCE_ROOT; };
-		E726783E1C35BEDE0022C2E1 /* WatchHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchHandler.swift; sourceTree = "<group>"; };
 		E72678401C35C0300022C2E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E7384EAB1C4DB7B90029D724 /* SalesforceMobileSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceMobileSDK_iOS.framework; path = "Pods/../build/Debug-iphoneos/SalesforceMobileSDK_iOS.framework"; sourceTree = "<group>"; };
+		E7384EAD1C4DB7FA0029D724 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "Pods/../build/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		E7384EB01C4DBB3E0029D724 /* SalesforceMobileSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceMobileSDK_iOS.framework; path = "Pods/../build/Debug-iphoneos/SalesforceMobileSDK_iOS.framework"; sourceTree = "<group>"; };
 		E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RejectProcess.apex; sourceTree = "<group>"; };
+		E79F3A031C4EAB4F00B484A2 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "Pods/../build/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		E79F3A041C4EAB4F00B484A2 /* SalesforceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceNetwork.framework; path = "Pods/../build/Debug-iphoneos/SalesforceNetwork.framework"; sourceTree = "<group>"; };
+		E79F3A051C4EAB4F00B484A2 /* SalesforceRestAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceRestAPI.framework; path = "Pods/../build/Debug-iphoneos/SalesforceRestAPI.framework"; sourceTree = "<group>"; };
+		E79F3A061C4EAB4F00B484A2 /* SalesforceSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceSDKCore.framework; path = "Pods/../build/Debug-iphoneos/SalesforceSDKCore.framework"; sourceTree = "<group>"; };
+		E7E76D761C4DC2D200BF46C9 /* SalesforceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceNetwork.framework; path = "Pods/../build/Debug-iphoneos/SalesforceNetwork.framework"; sourceTree = "<group>"; };
+		E7E76D771C4DC2D200BF46C9 /* SalesforceRestAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceRestAPI.framework; path = "Pods/../build/Debug-iphoneos/SalesforceRestAPI.framework"; sourceTree = "<group>"; };
+		E7E76D781C4DC2D200BF46C9 /* SalesforceSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceSDKCore.framework; path = "Pods/../build/Debug-iphoneos/SalesforceSDKCore.framework"; sourceTree = "<group>"; };
 		E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalsDetailController.swift; sourceTree = "<group>"; };
 		E7EFDD801A684CC80022AB99 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Interface.storyboard; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E7F7F5A21A65C6E4003CFD1C /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
@@ -153,20 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824A9FE81725098F00C9BD79 /* libxml2.dylib in Frameworks */,
-				824A9FEA1725099600C9BD79 /* libz.dylib in Frameworks */,
-				824A9DD91724E16400C9BD79 /* UIKit.framework in Frameworks */,
-				4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */,
-				824A9DDB1724E16400C9BD79 /* Foundation.framework in Frameworks */,
-				824A9FEC17250ADA00C9BD79 /* CFNetwork.framework in Frameworks */,
-				824A9FEE17250AE500C9BD79 /* CoreData.framework in Frameworks */,
-				824A9DDD1724E16400C9BD79 /* CoreGraphics.framework in Frameworks */,
-				824A9FF017250B7D00C9BD79 /* MessageUI.framework in Frameworks */,
-				824A9FF217250B8300C9BD79 /* MobileCoreServices.framework in Frameworks */,
-				824A9FF417250BF300C9BD79 /* QuartzCore.framework in Frameworks */,
-				824A9FF617250BFA00C9BD79 /* Security.framework in Frameworks */,
-				824A9FF817250C0100C9BD79 /* SystemConfiguration.framework in Frameworks */,
-				7DCF2C1B9A83555582FF5A42 /* Pods.framework in Frameworks */,
+				CC9D866F435E46868FA3CB90 /* Pods_SalesforceWatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +166,8 @@
 			children = (
 				95BFEB9ED760F1F0CFB50BEF /* Pods.debug.xcconfig */,
 				37637E246A39FEDEFE175DE6 /* Pods.release.xcconfig */,
+				4A573416AF92466CCDB37E0A /* Pods-SalesforceWatch.debug.xcconfig */,
+				B0BF81B6F58B453ED3E3DBEC /* Pods-SalesforceWatch.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -214,6 +197,16 @@
 		824A9DD71724E16400C9BD79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E79F3A031C4EAB4F00B484A2 /* CocoaLumberjack.framework */,
+				E79F3A041C4EAB4F00B484A2 /* SalesforceNetwork.framework */,
+				E79F3A051C4EAB4F00B484A2 /* SalesforceRestAPI.framework */,
+				E79F3A061C4EAB4F00B484A2 /* SalesforceSDKCore.framework */,
+				E7E76D761C4DC2D200BF46C9 /* SalesforceNetwork.framework */,
+				E7E76D771C4DC2D200BF46C9 /* SalesforceRestAPI.framework */,
+				E7E76D781C4DC2D200BF46C9 /* SalesforceSDKCore.framework */,
+				E7384EB01C4DBB3E0029D724 /* SalesforceMobileSDK_iOS.framework */,
+				E7384EAD1C4DB7FA0029D724 /* CocoaLumberjack.framework */,
+				E7384EAB1C4DB7B90029D724 /* SalesforceMobileSDK_iOS.framework */,
 				824A9FE71725098F00C9BD79 /* libxml2.dylib */,
 				824A9FE91725099600C9BD79 /* libz.dylib */,
 				824A9FEB17250ADA00C9BD79 /* CFNetwork.framework */,
@@ -228,6 +221,7 @@
 				824A9FF717250C0100C9BD79 /* SystemConfiguration.framework */,
 				824A9DD81724E16400C9BD79 /* UIKit.framework */,
 				58A277B472B8CF03E55A3471 /* Pods.framework */,
+				BBE99619DE5A6E8326546388 /* Pods_SalesforceWatch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -253,7 +247,6 @@
 			children = (
 				824A9DE01724E16400C9BD79 /* SalesforceWatch-Info.plist */,
 				824A9DE11724E16400C9BD79 /* InfoPlist.strings */,
-				824A9DE41724E16400C9BD79 /* main.m */,
 				824A9DE61724E16400C9BD79 /* SalesforceWatch-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -298,9 +291,7 @@
 		E71F94481A65953100FE7769 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				E70BBE6A1A643BB000D0926F /* WatchInfo.swift */,
 				E71F94491A65956400FE7769 /* ApprovalsHandler.swift */,
-				E726783E1C35BEDE0022C2E1 /* WatchHandler.swift */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -545,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SalesforceWatch/Pods-SalesforceWatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F06C53CA0C427E3BBC586BD /* Copy Pods Resources */ = {
@@ -560,7 +551,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SalesforceWatch/Pods-SalesforceWatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -570,11 +561,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E70BBE6B1A643BB000D0926F /* WatchInfo.swift in Sources */,
-				824A9DE51724E16400C9BD79 /* main.m in Sources */,
 				2EDF3CAF1951C3FB00841D1C /* RootVC.swift in Sources */,
 				E72678411C35C0300022C2E1 /* AppDelegate.swift in Sources */,
-				E726783F1C35BEDE0022C2E1 /* WatchHandler.swift in Sources */,
 				E71F944A1A65956400FE7769 /* ApprovalsHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,6 +637,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -674,6 +663,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -681,7 +671,7 @@
 		};
 		824A9DFC1724E16400C9BD79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95BFEB9ED760F1F0CFB50BEF /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4A573416AF92466CCDB37E0A /* Pods-SalesforceWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -695,7 +685,17 @@
 				INFOPLIST_FILE = "SalesforceSwiftBase/SalesforceWatch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CocoaLumberjack\"",
+					"-framework",
+					"\"SalesforceNetwork\"",
+					"-framework",
+					"\"SalesforceRestAPI\"",
+					"-framework",
+					"\"SalesforceSDKCore\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quintonwall.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SalesforceWatch;
 				PROVISIONING_PROFILE = "";
@@ -707,7 +707,7 @@
 		};
 		824A9DFD1724E16400C9BD79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37637E246A39FEDEFE175DE6 /* Pods.release.xcconfig */;
+			baseConfigurationReference = B0BF81B6F58B453ED3E3DBEC /* Pods-SalesforceWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -721,19 +721,16 @@
 				INFOPLIST_FILE = "SalesforceSwiftBase/SalesforceWatch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
+				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/openssl",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/MKNetworkKit-iOS",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceCommonUtils",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceNativeSDK",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceOAuth",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceSDKCore",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceNetworkSDK",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/sqlcipher",
-					"$(SRCROOT)/SalesforceSwiftBase/Dependencies/SalesforceSecurity",
+					"-framework",
+					"\"CocoaLumberjack\"",
+					"-framework",
+					"\"SalesforceNetwork\"",
+					"-framework",
+					"\"SalesforceRestAPI\"",
+					"-framework",
 				);
-				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.quintonwall.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SalesforceWatch;
 				PROVISIONING_PROFILE = "";
