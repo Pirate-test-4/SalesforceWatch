@@ -32,19 +32,34 @@ class ApprovalsInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awakeWithContext(context: AnyObject?) {
         
         
-        let applicationData = ["request-type":"approval-count"]
         
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            self.getApprovalList()
+        }
+        
+    }
+    
+    private func getApprovalList() {
+        
+        let applicationData = ["request-type":"approval-count"]
         
         if (WCSession.defaultSession().reachable) {
             session.sendMessage(applicationData, replyHandler: { reply in
                 //handle iphone response here
                 if(reply["success"] != nil) {
-                    let a:AnyObject = reply["results"] as! NSDictionary
-                     self.loadTableData(a as! NSArray)
+                    let x:String = reply["success"] as! String
+                    
+                    
+                    let res = SalesforceObjectType.convertStringToDictionary(x)
+                    self.loadTableData(res!["records"] as! NSArray)
                 }
             },
             errorHandler: {(error ) -> Void in
                     // catch any errors here
+                print("Something went wrong: \(error)")
             })
         }
             

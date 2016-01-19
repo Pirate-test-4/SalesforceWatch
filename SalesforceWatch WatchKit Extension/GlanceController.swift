@@ -62,11 +62,22 @@ class GlanceController: WKInterfaceController, WCSessionDelegate {
         if (WCSession.defaultSession().reachable) {
             session.sendMessage(applicationData, replyHandler: { reply in
                 //handle iphone response here
-                if(reply["results"] != nil) {
-                    let a:AnyObject = reply["results"] as! NSDictionary
-                    self.approvalsResult = a as! NSArray
+                if(reply["success"] != nil) {
+                    
+                    
+                    let x:String = reply["success"] as! String
+                    
+                    
+                    let res = SalesforceObjectType.convertStringToDictionary(x)
+                    
+                    print(res?.count)
+                    self.approvalsResult = res!["records"] as! NSArray
+                    
+                    print(self.approvalsResult)
+                    
+
                      _ = String(self.approvalsResult.count)
-                    //self.loadTableData(a as! NSDictionary)
+                  
                     
                     var approvedCount = 0
                     var pendingCount = 0
@@ -105,6 +116,7 @@ class GlanceController: WKInterfaceController, WCSessionDelegate {
                     
                  errorHandler: {(error ) -> Void in
                 // catch any errors here
+                     print("Something went wrong: \(error)")
             })
         }
 

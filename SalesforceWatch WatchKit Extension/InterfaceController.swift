@@ -12,6 +12,8 @@ import WatchConnectivity  //new for watchOS2
 
 
 
+
+
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
   
@@ -59,10 +61,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.sendMessage(applicationData, replyHandler: { reply in
                 //handle iphone response here
                 if(reply["success"] != nil) {
-                    let a:AnyObject = reply["results"] as! NSDictionary
-                    self.approvalsResult = a as! NSArray
+                    let x:String = reply["success"] as! String
+                   
+                    
+                     let res = SalesforceObjectType.convertStringToDictionary(x)
+                    
+                    print(res?.count)
+                    let resultsCount = String(res!.count)
+                    self.approvalsResult = res!["records"] as! NSArray
                 
-                    let resultsCount = String(self.approvalsResult.count)
+                    print(self.approvalsResult)
 
                     self.pendingApprovalsButton.setTitle(resultsCount)
                     
@@ -73,6 +81,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 }
             },  errorHandler: {(error ) -> Void in
                 // catch any errors here
+                print("Something went wrong: \(error)")
         })
       }
         
@@ -87,27 +96,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
    
     
 
-/*
-    
-    private func getCurrentUserId() {
-        
-        //call parent iphone app
-        let requestBundle = ["request-type" : "userid"]
-      
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            
-            if let reply = reply as? [String: String] {
-                self.userNameLabel.setText("Hello "+reply["username"]!)
-            }
-            else {
-                self.userNameLabel.setText("No Response")
-            }
-        })
-    
-    }
-  */
-    
-
     override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
         if segueIdentifier == "showApprovals" {
             print("seque pressed!")
@@ -116,5 +104,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             return nil
         }
     }
+    
     
 }

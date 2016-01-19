@@ -8,4 +8,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 pod 'SalesforceSDKCore'
 pod 'SalesforceNetwork'
 pod 'SalesforceRestAPI'
+
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

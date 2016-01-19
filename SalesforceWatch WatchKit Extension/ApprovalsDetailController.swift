@@ -35,6 +35,7 @@ class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
             },
             errorHandler: {(error ) -> Void in
                     // catch any errors here
+                print("Something went wrong: \(error)")
             })
         }
     }
@@ -50,6 +51,7 @@ class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
                 },
                 errorHandler: {(error ) -> Void in
                     // catch any errors here
+                    print("Something went wrong: \(error)")
             })
         }
     
@@ -57,6 +59,13 @@ class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
     
     override func awakeWithContext(context: AnyObject?) {
         precondition(context is Dictionary<String, String> , "Expected class of `context` to be dictionary containing record and targetobjectid.")
+        
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+
         
         //let (recordid, targetobjectid) = context as (String, String)
         let record = context as! Dictionary<String, String>
@@ -70,22 +79,28 @@ class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
         if (WCSession.defaultSession().reachable) {
             session.sendMessage(requestBundle, replyHandler: { reply in
                 if(reply["success"] != nil) {
-                   let a:AnyObject = reply["results"] as! NSDictionary
-                    if let results = a as? [NSDictionary] {
-                        let results = results[0]
-                        self.optyName.setText(results["Name"] as? String)
+                    let x:String = reply["success"] as! String
+                    
+                    
+                    let res = SalesforceObjectType.convertStringToDictionary(x)
+
+                    //if let results = res as? [NSDictionary] {
+                       // let results = results[0]
+                        self.optyName.setText(res!["Name"] as? String)
                         
-                        let amt: AnyObject? = results["Amount"]
+                        let amt: AnyObject? = res!["Amount"]
                         if let amt = amt as? NSNumber {
                             print(amt)
                             self.optyAmount.setText("$"+amt.stringValue)
                         }
                     }
-                } else {
-                    print("no response")
-                }},
+               // } else {
+                //    print("no response")
+                //}
+            },
                 errorHandler: {(error ) -> Void in
                     // catch any errors here
+                    print("Something went wrong : \(error)")
             })
         }
     }

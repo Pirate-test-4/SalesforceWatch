@@ -13,6 +13,7 @@ import Foundation
 import WatchConnectivity
 import SalesforceSDKCore
 import SalesforceRestAPI
+import SwiftyJSON
 
 
 class ApprovalsHandler: NSObject, WCSessionDelegate {
@@ -32,6 +33,24 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
         }
     }
     
+    func testDeets() {
+        let sharedInstance = SFRestAPI.sharedInstance()
+        
+
+        let objid = "04g61000000QnXAAA0"
+        let query = String("select id, name, amount, Account.name from Opportunity where id = '"+(objid as String)+"'")
+        
+        sharedInstance.performSOQLQuery(query, failBlock: { error in
+           print("fucked up \(error)")
+            }) { response in  //success
+                print("sending successful response")
+                //watchos2 only lets us pass primitive types. We need to convert
+                //the dictionary response from salesforce into a json string to pass to
+                //the watch, and then recreate it on the other side..
+                let json = JSON(response)
+        }
+    }
+
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         print("heard a request from the watch")
         
@@ -51,8 +70,11 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                 sharedInstance.performSOQLQuery(query, failBlock: { error in
                     replyHandler(["error": error])
                     }) { response in  //success
-                        print("sending successful response")
-                        replyHandler(["success": response])
+                        //watchos2 only lets us pass primitive types. We need to convert
+                        //the dictionary response from salesforce into a json string to pass to 
+                        //the watch, and then recreate it on the other side..
+                        let json = JSON(response[0]!)
+                       replyHandler(["success": json.rawString()!])
                 }
 
                 
@@ -64,13 +86,14 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                     replyHandler(["error": error])
                     }) { response in  //success
                         print("sending successful response")
-                        replyHandler(["success": response])
+                        //watchos2 only lets us pass primitive types. We need to convert
+                        //the dictionary response from salesforce into a json string to pass to
+                        //the watch, and then recreate it on the other side..
+                        let json = JSON(response)
+                        replyHandler(["success": json.rawString()!])
                 }
             } else if (reqType == "approval-update") {
                 let objid = message["param1"] as! String
-                //let currUserId = SFUserAccountManager.sharedInstance().currentUserIdentity.userId
-                //let apiUrl = SFUserAccountManager.sharedInstance().currentUser.apiUrl.absoluteString
-                
                 
                 //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
                 // see ApproveProcess.apex contained in the project
@@ -100,4 +123,16 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
 
         }
     }
+    
+    /*
+    func dictionaryToJSONString(dict: NSDictionary) -> NSString {
+        
+        let theJSONData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue: 0))
+        
+        let theJSONText = NSString(data: theJSONData,
+            encoding: NSASCIIStringEncoding)
+    
+        return theJSONText!
+    }
+*/
 }

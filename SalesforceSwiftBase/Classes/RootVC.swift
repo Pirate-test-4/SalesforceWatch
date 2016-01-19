@@ -35,14 +35,27 @@ class RootVC: UIViewController, SFAuthenticationManagerDelegate {
     
     //  #pragma mark - view lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        connectButton.backgroundColor = UIColor.clearColor()
+        connectButton.layer.cornerRadius = 2
+        connectButton.layer.borderWidth = 0.5
+        connectButton.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = " Mobile SDK & WatchOS2 Sample App"
         
-        connectButton.backgroundColor = UIColor.clearColor()
-        //connectButton.layer.cornerRadius = 5
-        // connectButton.layer.borderWidth = 1
-        connectButton.layer.borderColor = UIColor.whiteColor().CGColor
+        SFAuthenticationManager.sharedManager().addDelegate(self)
+        
+        if SFAuthenticationManager.sharedManager().haveValidSession {
+            print("VALID")
+            dispatch_async(dispatch_get_main_queue()){
+                
+                self.performSegueWithIdentifier("loggedin", sender: self)
+                
+            }
+        }
     }
     
     @IBAction func connectTapped(sender: AnyObject) {
