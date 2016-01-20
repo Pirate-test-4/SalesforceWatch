@@ -33,7 +33,8 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
         }
     }
     
-   
+
+
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         print("heard a request from the watch")
         
@@ -56,7 +57,7 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                         //watchos2 only lets us pass primitive types. We need to convert
                         //the dictionary response from salesforce into a json string to pass to 
                         //the watch, and then recreate it on the other side..
-                        let json = JSON(response[0]!)
+                        let json = JSON(response)
                        replyHandler(["success": json.rawString()!])
                 }
 
@@ -72,7 +73,7 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                         //watchos2 only lets us pass primitive types. We need to convert
                         //the dictionary response from salesforce into a json string to pass to
                         //the watch, and then recreate it on the other side..
-                        let json = JSON(response)
+                        let json = JSON(response[0]!)
                         replyHandler(["success": json.rawString()!])
                 }
             } else if (reqType == "approval-update") {
