@@ -13,6 +13,8 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //var a:ApprovalsHandler = ApprovalsHandler()
+        //a.testApproval()
        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

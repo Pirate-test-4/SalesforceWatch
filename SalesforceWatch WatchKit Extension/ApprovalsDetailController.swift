@@ -83,17 +83,21 @@ class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
                     
                     
                     let res = SalesforceObjectType.convertStringToDictionary(x)
+                    print("Opty details: \(x)")
 
                     //if let results = res as? [NSDictionary] {
-                       // let results = results[0]
-                        self.optyName.setText(res!["Name"] as? String)
+                       let results = res!["records"]![0]
+                        self.optyName.setText(results!["Name"] as? String)
                         
-                        let amt: AnyObject? = res!["Amount"]
+                        let amt: AnyObject? = results!["Amount"]
                         if let amt = amt as? NSNumber {
                             print(amt)
                             self.optyAmount.setText("$"+amt.stringValue)
                         }
                     }
+                else {
+                    print("didnt get a successful response")
+                }
                // } else {
                 //    print("no response")
                 //}

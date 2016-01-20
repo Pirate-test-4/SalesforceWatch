@@ -34,7 +34,6 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
     }
     
 
-
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         print("heard a request from the watch")
         
@@ -63,7 +62,7 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
 
                 
             } else if (reqType == "approval-details") {
-                let objid = message["param1"] as! String
+                let objid = message["id"] as! String
                 let query = String("select id, name, amount, Account.name from Opportunity where id = '"+(objid as String)+"'")
                 
                 sharedInstance.performSOQLQuery(query, failBlock: { error in
@@ -73,11 +72,12 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                         //watchos2 only lets us pass primitive types. We need to convert
                         //the dictionary response from salesforce into a json string to pass to
                         //the watch, and then recreate it on the other side..
-                        let json = JSON(response[0]!)
+                        let json = JSON(response)
                         replyHandler(["success": json.rawString()!])
+                        
                 }
             } else if (reqType == "approval-update") {
-                let objid = message["param1"] as! String
+                let objid = message["id"] as! String
                 
                 //The salesforce approval schema is pretty complicated. Let's make it easy with an Apex Rest Resource
                 // see ApproveProcess.apex contained in the project
@@ -87,19 +87,31 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
                 request.endpoint = "/services/apexrest/ApproveProcess"
                 request.path = "/services/apexrest/ApproveProcess"
                 request.queryParams = ["processId" : objid]
-                sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
+                sharedInstance.sendRESTRequest(request, failBlock: {error in
+                    replyHandler(["error": "Failed to approve request: \(error)"])
+                    }) { response in
+                        replyHandler(["success": "approved"])
+                }
+                replyHandler(["success": "approved"])
+
+                
                 
                 
             } else if (reqType == "approval-reject") {
-                let objid = message["param1"] as! String
+                let objid = message["id"] as! String
                 let request = SFRestRequest()
                 
                 request.method = SFRestMethodPOST
                 request.endpoint = "/services/apexrest/RejectProcess"
                 request.path = "/services/apexrest/RejectProcess"
                 request.queryParams = ["processId" : objid]
-                sharedInstance.send(request, delegate: nil)  //we dont need to handle the response
-                
+                sharedInstance.sendRESTRequest(request, failBlock: {error in
+                    replyHandler(["error": "Failed to approve request: \(error)"])
+                    }) { response in
+                        replyHandler(["success": "rejected"])
+                }
+                replyHandler(["success": "rejected"])
+
                 
             }  else {
                 replyHandler(["error": "no such request-type: "+reqType])

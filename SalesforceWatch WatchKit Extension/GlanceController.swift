@@ -73,7 +73,7 @@ class GlanceController: WKInterfaceController, WCSessionDelegate {
                     print(res?.count)
                     self.approvalsResult = res!["records"] as! NSArray
                     
-                    print(self.approvalsResult)
+                    //print(self.approvalsResult)
                     
 
                      _ = String(self.approvalsResult.count)
