@@ -21,6 +21,8 @@
 		E726783B1C35BE970022C2E1 /* SalesforceWatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E725F9DB1A5C8A4A00D6203C /* SalesforceWatch WatchKit App.app */; };
 		E72678411C35C0300022C2E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72678401C35C0300022C2E1 /* AppDelegate.swift */; };
 		E76BBC641BA0DF9500F93FCB /* RejectProcess.apex in Resources */ = {isa = PBXBuildFile; fileRef = E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */; };
+		E79F3A0C1C4ECD8E00B484A2 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F3A0B1C4ECD8E00B484A2 /* Media.xcassets */; };
+		E79F3A0E1C4EDFBB00B484A2 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F3A0D1C4EDFBB00B484A2 /* HomeTableViewController.swift */; };
 		E7EFDD7F1A6837B10022AB99 /* ApprovalsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFDD7E1A6837B10022AB99 /* ApprovalsDetailController.swift */; };
 		E7EFDD811A684CC80022AB99 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EFDD801A684CC80022AB99 /* Interface.storyboard */; };
 		E7F7F5A31A65C6E4003CFD1C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7F7F5A21A65C6E4003CFD1C /* images.xcassets */; };
@@ -129,6 +131,8 @@
 		E79F3A041C4EAB4F00B484A2 /* SalesforceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceNetwork.framework; path = "Pods/../build/Debug-iphoneos/SalesforceNetwork.framework"; sourceTree = "<group>"; };
 		E79F3A051C4EAB4F00B484A2 /* SalesforceRestAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceRestAPI.framework; path = "Pods/../build/Debug-iphoneos/SalesforceRestAPI.framework"; sourceTree = "<group>"; };
 		E79F3A061C4EAB4F00B484A2 /* SalesforceSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceSDKCore.framework; path = "Pods/../build/Debug-iphoneos/SalesforceSDKCore.framework"; sourceTree = "<group>"; };
+		E79F3A0B1C4ECD8E00B484A2 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		E79F3A0D1C4EDFBB00B484A2 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		E7E76D761C4DC2D200BF46C9 /* SalesforceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceNetwork.framework; path = "Pods/../build/Debug-iphoneos/SalesforceNetwork.framework"; sourceTree = "<group>"; };
 		E7E76D771C4DC2D200BF46C9 /* SalesforceRestAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceRestAPI.framework; path = "Pods/../build/Debug-iphoneos/SalesforceRestAPI.framework"; sourceTree = "<group>"; };
 		E7E76D781C4DC2D200BF46C9 /* SalesforceSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SalesforceSDKCore.framework; path = "Pods/../build/Debug-iphoneos/SalesforceSDKCore.framework"; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				E725F9A71A5B45A200D6203C /* Main.storyboard */,
 				E7FAF6201BA0DA140036F403 /* ApproveProcess.apex */,
 				E76BBC631BA0DF9500F93FCB /* RejectProcess.apex */,
+				E79F3A0B1C4ECD8E00B484A2 /* Media.xcassets */,
 			);
 			name = SalesforceWatch;
 			path = SalesforceSwiftBase;
@@ -259,6 +264,7 @@
 				2EDF3CAE1951C3FB00841D1C /* RootVC.swift */,
 				2EDF3CAD1951C3FA00841D1C /* SalesforceSwiftBase-Bridging-Header.h */,
 				E72678401C35C0300022C2E1 /* AppDelegate.swift */,
+				E79F3A0D1C4EDFBB00B484A2 /* HomeTableViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 			files = (
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */,
+				E79F3A0C1C4ECD8E00B484A2 /* Media.xcassets in Resources */,
 				E725F9A81A5B45A200D6203C /* Main.storyboard in Resources */,
 				E7FAF6211BA0DA140036F403 /* ApproveProcess.apex in Resources */,
 				824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */,
@@ -561,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E79F3A0E1C4EDFBB00B484A2 /* HomeTableViewController.swift in Sources */,
 				2EDF3CAF1951C3FB00841D1C /* RootVC.swift in Sources */,
 				E72678411C35C0300022C2E1 /* AppDelegate.swift in Sources */,
 				E71F944A1A65956400FE7769 /* ApprovalsHandler.swift in Sources */,

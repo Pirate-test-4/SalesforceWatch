@@ -1,1 +1,0 @@
-../../../../../SalesforceMobileSDK-iOS/libs/SalesforceSDKCore/SalesforceSDKCore/Classes/Security/SFDefaultUserManagementViewController.h

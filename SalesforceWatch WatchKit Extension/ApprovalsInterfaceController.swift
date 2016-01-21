@@ -79,12 +79,13 @@ class ApprovalsInterfaceController: WKInterfaceController, WCSessionDelegate {
            let row = resultsTable.rowControllerAtIndex(index) as! ApprovalDetailsRowController
        
             let s: NSDictionary = record as! NSDictionary
-            row.image.setImageNamed(s["Status"] as? String)
+            //row.image.setImageNamed(s["Status"] as? String)
+            row.image.setImageNamed("Tag")
             row.recordid = s["Id"] as? String
             row.opportunityId = s["TargetObjectId"] as? String
             let status = s["Status"] as? String
             row.detailLabel.setText(status! + " "+(SalesforceObjectType.getType(row.opportunityId) as String))
-            //row.detailLabel.setText(s["Status"] as? String)
+            
             
         }
         

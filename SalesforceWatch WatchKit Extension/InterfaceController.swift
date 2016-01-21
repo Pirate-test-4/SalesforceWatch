@@ -70,7 +70,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                     let resultsCount = String(res!.count)
                     self.approvalsResult = res!["records"] as! NSArray
                 
-                    print(self.approvalsResult)
+                    //print(self.approvalsResult)
 
                     self.pendingApprovalsButton.setTitle(resultsCount)
                     

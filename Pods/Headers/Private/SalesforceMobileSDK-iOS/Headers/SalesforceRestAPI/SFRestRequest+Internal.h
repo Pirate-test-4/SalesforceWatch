@@ -1,1 +1,0 @@
-../../../../../SalesforceMobileSDK-iOS/libs/SalesforceRestAPI/SalesforceRestAPI/Classes/SFRestRequest+Internal.h
