@@ -77,6 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SalesforceSDKManager.sharedManager().connectedAppId = RemoteAccessConsumerKey
         SalesforceSDKManager.sharedManager().connectedAppCallbackUri = OAuthRedirectURI
         SalesforceSDKManager.sharedManager().authScopes = scopes
+        
+        //allow watch and salesforce comms in the background
+        SFKeychainItemWrapper.setAccessibleAttribute(kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly)
+        SFFileProtectionHelper.sharedInstance().defaultNSFileProtectionMode = NSFileProtectionCompleteUntilFirstUserAuthentication
+       
+
         SalesforceSDKManager.sharedManager().postLaunchAction = {
             [unowned self] (launchActionList: SFSDKLaunchAction) in
             let launchActionString = SalesforceSDKManager.launchActionsStringRepresentation(launchActionList)
