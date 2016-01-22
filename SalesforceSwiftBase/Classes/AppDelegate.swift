@@ -73,8 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SFLogger.setLogLevel(SFLogLevel.Debug)
         
-        // TEST
-        //SFAuthenticationManager.sharedManager().logout()
         
         SalesforceSDKManager.sharedManager().connectedAppId = RemoteAccessConsumerKey
         SalesforceSDKManager.sharedManager().connectedAppCallbackUri = OAuthRedirectURI

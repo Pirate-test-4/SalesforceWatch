@@ -24,8 +24,6 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
         
         print("Salesforce Wear Dev Pack for Apple Watch registering for WatchKit sessions")
         
-        
-        
         if (WCSession.isSupported()) {
             session = WCSession.defaultSession()
             session.delegate = self;
@@ -120,15 +118,5 @@ class ApprovalsHandler: NSObject, WCSessionDelegate {
         }
     }
     
-    /*
-    func dictionaryToJSONString(dict: NSDictionary) -> NSString {
-        
-        let theJSONData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue: 0))
-        
-        let theJSONText = NSString(data: theJSONData,
-            encoding: NSASCIIStringEncoding)
-    
-        return theJSONText!
-    }
-*/
+
 }
