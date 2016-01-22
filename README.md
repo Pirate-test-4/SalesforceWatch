@@ -38,30 +38,30 @@ App Groups allow the sharing of data between different apps within a single proj
 ![App Bundles](https://github.com/developerforce/SalesforceWear-DevPack-For-AppleWatch/blob/master/readme-images/app-bundles.png)
 
 One of the major changes in WatchOS2 is the greatly simplified send/receive message functions. In order to send or receive messages, you must first ensure a phone or watch is available and establish a session:
-
-'' var session: WCSession!
-'' if (WCSession.isSupported()) {
-			'' session = WCSession.defaultSession()
-			'' session.delegate = self;
-			'' session.activateSession()
-'' }
+```swift
+ var session: WCSession!
+ if (WCSession.isSupported()) {
+			 session = WCSession.defaultSession()
+			 session.delegate = self;
+			 session.activateSession()
+ }
 
 Once a session is established, messages can be sent via a code block:
  
-		'' if (WCSession.defaultSession().reachable) {
-			'' session.sendMessage(applicationData, replyHandler: { reply in
-				'' //add your code here
-			'' },  errorHandler: {(error ) -> Void in
-				'' // catch any errors here
-		'' })
-		'' }
-
+		 if (WCSession.defaultSession().reachable) {
+			 session.sendMessage(applicationData, replyHandler: { reply in
+				 //add your code here
+			 },  errorHandler: {(error ) -> Void in
+				 // catch any errors here
+		 })
+		 }
+```
 Or receive a message, and send a response using a replyHandler:
-
-''  func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-''  //add your code here
-'' }
-
+```swift
+  func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+  //add your code here
+ }
+```
 
 As to whether you use App Groups of the WCSession for communication, it often comes down to personal preference. The developer pack uses WCSession. We’ve found that this works better with code blocks and the Mobile SDK. We like them. You should too.
 
@@ -77,49 +77,49 @@ Our iOS app is pretty simple. It supports authentication and a storyboard with a
 The AppDelegate, the start of your application, is provided by the MobileSDK when you create a new project using *forceios*. However, forceios creates an Objective-C class. The Apple Watch Dev Pack is written in Swift. As such, I rewrote the Objective-C AppDelegate entirely in Swift. 
 
 Now that WatchOS2 provides a more democratized send/receive messages approach instead of the *handleWatchKitExtensionRequest* approach in WatchOS1, the AppDelegate is pretty independent of watch specific code. The AppDelegate is still a great place to initialize the Mobile SDK:
-
-''  override init()
-	'' {
-		'' super.init()
-		'' 
-		'' 
-		'' //let appGroupID = "group.com.gyspycode.SFTasks"
-		'' //let defaults = NSUserDefaults(suiteName: appGroupID)
-		'' 
-		'' 
-		'' SFLogger.setLogLevel(SFLogLevel.Debug)
-		'' 
-		'' 
-		'' SalesforceSDKManager.sharedManager().connectedAppId = RemoteAccessConsumerKey
-		'' SalesforceSDKManager.sharedManager().connectedAppCallbackUri = OAuthRedirectURI
-		'' SalesforceSDKManager.sharedManager().authScopes = scopes
-		'' SalesforceSDKManager.sharedManager().postLaunchAction = {
-			'' [unowned self] (launchActionList: SFSDKLaunchAction) in
-			'' let launchActionString = SalesforceSDKManager.launchActionsStringRepresentation(launchActionList)
-			'' self.log(SFLogLevel.Info, msg:"Post-launch: launch actions taken: \(launchActionString)");
-		'' }
-		'' SalesforceSDKManager.sharedManager().launchErrorAction = {
-			'' [unowned self] (error: NSError?, launchActionList: SFSDKLaunchAction) in
-			'' if let actualError = error {
-				'' self.log(SFLogLevel.Error, msg:"Error during SDK launch: \(actualError.localizedDescription)")
-			'' } else {
-				'' self.log(SFLogLevel.Error, msg:"Unknown error during SDK launch.")
-			'' }
-''   
-		'' }
-		'' SalesforceSDKManager.sharedManager().postLogoutAction = {
-			'' [unowned self] in
-			'' self.handleSdkManagerLogout()
-		'' }
-		'' SalesforceSDKManager.sharedManager().switchUserAction = {
-			'' [unowned self] (fromUser: SFUserAccount?, toUser: SFUserAccount?) -> () in
-			'' self.handleUserSwitch(fromUser, toUser: toUser)
-		'' }
-		'' 
-		'' 
-		'' approvalsHelper.register()
-	'' }
-
+```swift
+  override init()
+	 {
+		 super.init()
+		 
+		 
+		 //let appGroupID = "group.com.gyspycode.SFTasks"
+		 //let defaults = NSUserDefaults(suiteName: appGroupID)
+		 
+		 
+		 SFLogger.setLogLevel(SFLogLevel.Debug)
+		 
+		 
+		 SalesforceSDKManager.sharedManager().connectedAppId = RemoteAccessConsumerKey
+		 SalesforceSDKManager.sharedManager().connectedAppCallbackUri = OAuthRedirectURI
+		 SalesforceSDKManager.sharedManager().authScopes = scopes
+		 SalesforceSDKManager.sharedManager().postLaunchAction = {
+			 [unowned self] (launchActionList: SFSDKLaunchAction) in
+			 let launchActionString = SalesforceSDKManager.launchActionsStringRepresentation(launchActionList)
+			 self.log(SFLogLevel.Info, msg:"Post-launch: launch actions taken: \(launchActionString)");
+		 }
+		 SalesforceSDKManager.sharedManager().launchErrorAction = {
+			 [unowned self] (error: NSError?, launchActionList: SFSDKLaunchAction) in
+			 if let actualError = error {
+				 self.log(SFLogLevel.Error, msg:"Error during SDK launch: \(actualError.localizedDescription)")
+			 } else {
+				 self.log(SFLogLevel.Error, msg:"Unknown error during SDK launch.")
+			 }
+   
+		 }
+		 SalesforceSDKManager.sharedManager().postLogoutAction = {
+			 [unowned self] in
+			 self.handleSdkManagerLogout()
+		 }
+		 SalesforceSDKManager.sharedManager().switchUserAction = {
+			 [unowned self] (fromUser: SFUserAccount?, toUser: SFUserAccount?) -> () in
+			 self.handleUserSwitch(fromUser, toUser: toUser)
+		 }
+		 
+		 
+		 approvalsHelper.register()
+	 }
+```
 This code is typical Mobile SDK initialization (but written in Swift - yay!) with two items to note:
 1. There is no call to *self.setupRootViewController()* that typically gets generated using *forceios*. In practice, I found that I want to use a button to kick of the Salesforce login flow vs showing the Salesforce login screen as soon as my app loads. Check out the *RootVC.swift* *connectTapped* function for where the login flow actually starts
 2. To keep the logic that interacts with Salesforce for approvals, I’ve encapsulated the logic in a separate class *ApprovalsHandler*. *ApprovalsHandler* also knows how to register for WatchKit sessions with the call to *approvalsHelper.register()*. 
@@ -131,23 +131,23 @@ The RootVC is the view controller of our extremely simple user interface. In fac
 Right now the iPhone portion of the Approvals app doesn’t do much of anything. As soon as I have some more time, I will build it out more to  allow the user to create approvals on the phone and have access to any approvals assigned to them via the Watch for quick approve/decline requests on the go. (If you are interested in learning how to make a complete app, check out the enterprise ios tutorials [here](http://quintonwall.github.io/enterprise-ios))
 
 Our sample app uses the *RootVC.swift* controller to let the user authenticate with Salesforce. In WatchOS1 and v1 of the Dev Pack, we used *RootVC.swift* to register for WatchKit notifications using *NSNotificationCenter*. You no longer need to do this. The result is much cleaner, more encapsulated code. Now, all our RootVC.swift controller is responsible for is UI interactions such as allowing the user to tap a button to start the Salesforce auth flow and perform appropriate nagivation once logged in.
-
-''  @IBAction func connectTapped(sender: AnyObject) {
-		'' 
-		''  SalesforceSDKManager.sharedManager().launch()
-	'' }
-	'' 
-	'' func authManagerDidFinish(manager: SFAuthenticationManager!, info: SFOAuthInfo!) {
-		'' 
-		'' //need to perform this check at the end of the authmanager lifecycle
-		'' //because SFRootViewManager removes the current view after didAUthenticate gets called :(
-		'' 
-		'' if SFAuthenticationManager.sharedManager().haveValidSession {
-			'' 
-			'' self.performSegueWithIdentifier("loggedin", sender: nil)
-		'' }
-	'' }
-
+```swift
+  @IBAction func connectTapped(sender: AnyObject) {
+		 
+		  SalesforceSDKManager.sharedManager().launch()
+	 }
+	 
+ func authManagerDidFinish(manager: SFAuthenticationManager!, info: SFOAuthInfo!) {
+		 
+		 //need to perform this check at the end of the authmanager lifecycle
+		 //because SFRootViewManager removes the current view after didAUthenticate gets called :(
+		 
+		 if SFAuthenticationManager.sharedManager().haveValidSession {
+			 
+			 self.performSegueWithIdentifier("loggedin", sender: nil)
+		 }
+	 }
+```
 ##HomeTableViewController.swift
 This controller will contain logic to display and approve/reject opportunities from the iPhone. It has not been fully implemented yet, but will use the same functions as the watch app via the ApprovalsHandler.
 
@@ -157,58 +157,58 @@ To encapsulate logic that handles communicating via the MobileSDK, we've created
 First, let’s import the Salesforce Mobile SDK, WatchOS2 frameworks, and specify this class as a Delegate to accept communications from a paired Apple Watch.
 
 ```swift
-'' import Foundation
-'' import WatchConnectivity
-'' import SalesforceSDKCore
-'' import SalesforceRestAPI
-'' import SwiftyJSON
-'' 
-'' 
-'' class ApprovalsHandler: NSObject, WCSessionDelegate {
-''  
+ import Foundation
+ import WatchConnectivity
+ import SalesforceSDKCore
+ import SalesforceRestAPI
+ import SwiftyJSON
+ 
+ 
+ class ApprovalsHandler: NSObject, WCSessionDelegate {
+  
 ```
 
 
 And register for a WatchKit session.
 ```swift
-''  var session: WCSession!
-	'' 
-	'' func register() {
-		'' 
-		'' print("Salesforce Wear Dev Pack for Apple Watch registering for WatchKit sessions")
-		'' 
-		'' if (WCSession.isSupported()) {
-			'' session = WCSession.defaultSession()
-			'' session.delegate = self;
-			'' session.activateSession()
-		'' }
-	'' }
+  var session: WCSession!
+	 
+	 func register() {
+		 
+		 print("Salesforce Wear Dev Pack for Apple Watch registering for WatchKit sessions")
+		 
+		 if (WCSession.isSupported()) {
+			 session = WCSession.defaultSession()
+			 session.delegate = self;
+			 session.activateSession()
+		 }
+	 }
 
 ```
 
 
 Now that our class is all set up, all of our logic is contained in the *didReceiveMessage* func provided by *WCSessionDelegate*. Similar to WatchOS1, messages are passed back and forth using Dictionaries. The Dev pack uses a key-value pair of **request-type** to identify which action (retrieve approvals, approve or reject an approval etc) is required. Let’s look at one of these requests, approval-count. 
 ```swift
-'' let sharedInstance = SFRestAPI.sharedInstance()
-'' 
-			'' let reqType = message["request-type"] as! String
-			'' 
-			'' if(reqType == "approval-count") {
-				'' let query = String("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
-				'' 
-				'' sharedInstance.performSOQLQuery(query, failBlock: { error in
-					'' replyHandler(["error": error])
-					'' }) { response in  //success
-						'' //watchos2 only lets us pass primitive types. We need to convert
-						'' //the dictionary response from salesforce into a json string to pass to 
-						'' //the watch, and then recreate it on the other side..
-						'' let json = JSON(response)
-					''    replyHandler(["success": json.rawString()!])
-				'' }
-'' 
-				'' 
-			'' }
-			'' 
+ let sharedInstance = SFRestAPI.sharedInstance()
+ 
+			 let reqType = message["request-type"] as! String
+			 
+			 if(reqType == "approval-count") {
+				 let query = String("SELECT Id, Status, TargetObjectId, LastModifiedDate, (SELECT Id, StepStatus, Comments FROM Steps) FROM ProcessInstance WHERE CreatedDate >= LAST_N_DAYS:10 AND Status = 'Pending' order by LastModifiedDate")
+				 
+				 sharedInstance.performSOQLQuery(query, failBlock: { error in
+					 replyHandler(["error": error])
+					 }) { response in  //success
+						 //watchos2 only lets us pass primitive types. We need to convert
+						 //the dictionary response from salesforce into a json string to pass to 
+						 //the watch, and then recreate it on the other side..
+						 let json = JSON(response)
+					    replyHandler(["success": json.rawString()!])
+				 }
+
+				 
+			 }
+			 
 			 ```
 
 Once we determine that the request is for an approval-count, we create a SOQL query and use the Mobile SDK performSOQLQuery func to retrieve data from Salesforce and a code block to handle the response. 
@@ -218,8 +218,8 @@ WatchOS2 uses a replyhandler dictionary to marshall payloads back to the Watch. 
 The MobileSDK returns a nicely nested Dictionary already based on a API call that returns JSON. It’s basically a dictionary of Strings. Unfortunately WatchKit doesn’t like it much. In order to pass our response back to the Watch using replayHandler (rather than AppGroups), we need to *flatten* things back to JSON. The Dev Pack uses SwiftyJSON, an open source framework that makes working with JSON in Swift incredibly easy
 
 ```swift
-'' let json = JSON(response)
-'' replyHandler(["success": json.rawString()!])
+ let json = JSON(response)
+ replyHandler(["success": json.rawString()!])
 
 ``` 
 
@@ -227,20 +227,20 @@ The MobileSDK returns a nicely nested Dictionary already based on a API call tha
 
 The app also uses custom Apex Rest endpoints to make it easy to work with the Salesforce Approval Process schema. This is a great example of using Salesforce as an MBaaS - you add cloud logic where it makes sense. In order to use the app add ApproveProcess.apex and RejectProcess.apex to your Salesforce org. The code below shows how the ApprovalHandler.swift calls these Restful endpoints.
 ```swift
-''  let request = SFRestRequest()
-				'' 
-				'' request.method = SFRestMethodPOST
-				'' request.endpoint = "/services/apexrest/ApproveProcess"
-				'' request.path = "/services/apexrest/ApproveProcess"
-				'' request.queryParams = ["processId" : objid]
-				'' sharedInstance.sendRESTRequest(request, failBlock: {error in
-					'' replyHandler(["error": "Failed to approve request: \(error)"])
-					'' }) { response in
-						'' replyHandler(["success": "approved"])
-				'' }
-				'' replyHandler(["success": "approved"])
-'' 
-				'' 
+  let request = SFRestRequest()
+				
+				 request.method = SFRestMethodPOST
+				 request.endpoint = "/services/apexrest/ApproveProcess"
+				 request.path = "/services/apexrest/ApproveProcess"
+				 request.queryParams = ["processId" : objid]
+				 sharedInstance.sendRESTRequest(request, failBlock: {error in
+					 replyHandler(["error": "Failed to approve request: \(error)"])
+					 }) { response in
+						 replyHandler(["success": "approved"])
+				 }
+				 replyHandler(["success": "approved"])
+
+				 
 ```
 
 ##WatchKit App
@@ -255,41 +255,41 @@ Let's look at our glance controller, *GlanceController*. As soon as the app is a
 WatchOS2 gives us the ability to check for a paired phone, and if available, establish a valid session. If we have a session, we can make a call to *getApprovalList()* to fetch information from Salesforce.
 
 ```swift
-'' override func willActivate() {
-		'' 
-		'' super.willActivate()
-		'' 
-		'' if (WCSession.isSupported()) {
-			'' session = WCSession.defaultSession()
-			'' session.delegate = self
-			'' session.activateSession()
-			''  self.getApprovalList()
-		'' }
-		'' 
-	''    
-	'' }
+ override func willActivate() {
+		 
+		 super.willActivate()
+		 
+		 if (WCSession.isSupported()) {
+			 session = WCSession.defaultSession()
+			 session.delegate = self
+			 session.activateSession()
+			  self.getApprovalList()
+		 }
+		 
+	    
+	 }
 ```
 
 *getApprovalsList* is a typical pattern on how to communicate with the iOS app, and eventually Salesforce. It calls *session.sendMessage* which provides a block to handle the response. You will note that we create a simple Dictionary object to set the request-type to ensure that our iOS app knows how to route the request properly.
 
 ```swift
 
-'' let applicationData = ["request-type":"approval-count"]
-		'' 
-		'' 
-		'' if (WCSession.defaultSession().reachable) {
-			'' session.sendMessage(applicationData, replyHandler: { reply in
-				'' //handle iphone response here
-				'' if(reply["success"] != nil) {
-					'' 
-					'' 
-					'' let x:String = reply["success"] as! String
-					'' 
-					'' 
-					'' let res = SalesforceObjectType.convertStringToDictionary(x)
-					'' //code abbreviated in readme
-			'' 
-'' 
+ let applicationData = ["request-type":"approval-count"]
+		 
+		 
+		 if (WCSession.defaultSession().reachable) {
+			 session.sendMessage(applicationData, replyHandler: { reply in
+				 //handle iphone response here
+				 if(reply["success"] != nil) {
+					 
+					 
+					 let x:String = reply["success"] as! String
+					 
+					 
+					 let res = SalesforceObjectType.convertStringToDictionary(x)
+					 //code abbreviated in readme
+			 
+
 ```
 
 Remember earlier in ApprovalsHandler we had to serialize the Dictionary object to JSON. Now we need to deserialize it back. The Dev pack contains a helper function *convertStringToDictionary* to take care of it for you.
