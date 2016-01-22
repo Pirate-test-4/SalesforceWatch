@@ -8,8 +8,9 @@
 
 import Foundation
 import WatchKit
+import WatchConnectivity
 
-class ApprovalsDetailController: WKInterfaceController {
+class ApprovalsDetailController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet weak var optyName: WKInterfaceLabel!
     @IBOutlet weak var accountName: WKInterfaceLabel!
@@ -18,84 +19,93 @@ class ApprovalsDetailController: WKInterfaceController {
     @IBOutlet weak var rejectButton: WKInterfaceButton!
     var id: String!
     
+    //used to register the watch and paired phone
+    var session : WCSession!
+
+
     
     @IBAction func approveTapped() {
-        println("Approving record: "+id)
-        
+        print("Approving record: "+id)
         
         let requestBundle = ["request-type" : "approval-update", "id" : id]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            //back
-        })
-
-        //self.popController()  //for push
-       self.dismissController()  //for modal
-        //self.popToRootController()
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                self.dismissController()
+            },
+            errorHandler: {(error ) -> Void in
+                    // catch any errors here
+                print("Something went wrong: \(error)")
+            })
+        }
     }
     
     @IBAction func rejectTapped() {
-        println("Rejecting record: "+id)
+        print("Rejecting record: "+id)
         
         let requestBundle = ["request-type" : "approval-reject", "id" : id]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            //back
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                self.dismissController()
+                },
+                errorHandler: {(error ) -> Void in
+                    // catch any errors here
+                    print("Something went wrong: \(error)")
             })
-         self.dismissController()  //for modal
+        }
+    
     }
     
     override func awakeWithContext(context: AnyObject?) {
         precondition(context is Dictionary<String, String> , "Expected class of `context` to be dictionary containing record and targetobjectid.")
         
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+
+        
         //let (recordid, targetobjectid) = context as (String, String)
         let record = context as! Dictionary<String, String>
-        println(record["recordid"])
+        print(record["recordid"])
         self.id = record["recordid"]
         let id: NSString = record["targetobjectid"]!
         //println(recordid)
         
         let requestBundle = ["request-type" : "approval-details", "id" : id]
-        //let requestBundle = ["request-type" : "approval-details"]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            
-            if let reply = reply as? [String: NSArray] {
-                 let results = reply["results"]
-                if let results = results as? [NSDictionary] {
-                    let results = results[0]
-                
-                    self.optyName.setText(results["Name"] as? String)
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(requestBundle, replyHandler: { reply in
+                if(reply["success"] != nil) {
+                    let x:String = reply["success"] as! String
                     
                     
-                    //get the nested account name
-                    //self.accountName.setText(results["Account"]?["Name"]? as? String)
-                    
-                   
-                    let amt: AnyObject? = results["Amount"] 
-                    if let amt = amt as? NSNumber {
-                        println(amt)
-                        self.optyAmount.setText("$"+amt.stringValue)
-                    }
-                 //self.optyAmount.setText(amt)
-                
-                
-                
-                //   self.userNameLabel.setText("Hello "+reply["username"]!)
-                
-                //for (key, val) in results {
-               //    println("parent app reponse is \(key): \(val)")
-              //  }
-            }
-            else {
-                // self.userNameLabel.setText("No Response")
-                println("no response")
-                
-            }
-            }
-        })
+                    let res = SalesforceObjectType.convertStringToDictionary(x)
+                    print("Opty details: \(x)")
 
-        
-        
+                    //if let results = res as? [NSDictionary] {
+                       let results = res!["records"]![0]
+                        self.optyName.setText(results!["Name"] as? String)
+                        
+                        let amt: AnyObject? = results!["Amount"]
+                        if let amt = amt as? NSNumber {
+                            print(amt)
+                            self.optyAmount.setText("$"+amt.stringValue)
+                        }
+                    }
+                else {
+                    print("didnt get a successful response")
+                }
+               // } else {
+                //    print("no response")
+                //}
+            },
+                errorHandler: {(error ) -> Void in
+                    // catch any errors here
+                    print("Something went wrong : \(error)")
+            })
+        }
     }
 }

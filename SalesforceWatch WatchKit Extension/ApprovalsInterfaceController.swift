@@ -8,14 +8,17 @@
 
 import Foundation
 import WatchKit
+import WatchConnectivity  //new for watchOS2
 
-class ApprovalsInterfaceController: WKInterfaceController {
+class ApprovalsInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     
     @IBOutlet weak var resultsTable: WKInterfaceTable!
     // MARK: Interface Life Cycle
     
     
+    //used to register the watch and paired phone
+    var session : WCSession!
     
     //if app starts from the glance
     override func handleUserActivity(userInfo: [NSObject : AnyObject]!) {
@@ -28,31 +31,40 @@ class ApprovalsInterfaceController: WKInterfaceController {
     //if context comes from a prepareForSeque call
     override func awakeWithContext(context: AnyObject?) {
         
-        let requestBundle = ["request-type" : "approval-count"]
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
-            
-            if let reply = reply as? [String: NSArray] {
-                self.loadTableData(reply["results"]!)
-                
-            }
-        })
+        
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            self.getApprovalList()
+        }
+        
     }
     
-    /*
-    override func willActivate() {
-        let requestBundle = ["request-type" : "approval-count"]
+    private func getApprovalList() {
         
-        WKInterfaceController.openParentApplication(requestBundle, reply: { [unowned self](reply, error) -> Void in
+        let applicationData = ["request-type":"approval-count"]
+        
+        if (WCSession.defaultSession().reachable) {
+            session.sendMessage(applicationData, replyHandler: { reply in
+                //handle iphone response here
+                if(reply["success"] != nil) {
+                    let x:String = reply["success"] as! String
+                    
+                    
+                    let res = SalesforceObjectType.convertStringToDictionary(x)
+                    self.loadTableData(res!["records"] as! NSArray)
+                }
+            },
+            errorHandler: {(error ) -> Void in
+                    // catch any errors here
+                print("Something went wrong: \(error)")
+            })
+        }
             
-            if let reply = reply as? [String: NSArray] {
-                self.loadTableData(reply["results"]!)
-                
-            }
-        })
     }
- */
-    
+
     override func didDeactivate() {
         //listDocument.closeWithCompletionHandler(nil)
     }
@@ -61,18 +73,19 @@ class ApprovalsInterfaceController: WKInterfaceController {
         
         //withRowType needs to be the identifier you give the table in your storyboard
         resultsTable.setNumberOfRows(results.count, withRowType: "ApprovalRows")
-        println(resultsTable.numberOfRows)
+        print(resultsTable.numberOfRows)
         
-        for (index, record) in enumerate(results) {
+        for (index, record) in results.enumerate() {
            let row = resultsTable.rowControllerAtIndex(index) as! ApprovalDetailsRowController
        
-            var s: NSDictionary = record as! NSDictionary
-            row.image.setImageNamed(s["Status"] as? String)
+            let s: NSDictionary = record as! NSDictionary
+            //row.image.setImageNamed(s["Status"] as? String)
+            row.image.setImageNamed("Tag")
             row.recordid = s["Id"] as? String
             row.opportunityId = s["TargetObjectId"] as? String
-            var status = s["Status"] as? String
+            let status = s["Status"] as? String
             row.detailLabel.setText(status! + " "+(SalesforceObjectType.getType(row.opportunityId) as String))
-            //row.detailLabel.setText(s["Status"] as? String)
+            
             
         }
         
